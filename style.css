@@ -1,61 +1,887 @@
-Johari-Nohari Workshop
-Discover Your Personality Spectrum
-Home Explorer Workshop Results
-Welcome to Your Personality Journey
-Explore the spectrum of human traits from Saint to Sin through the revolutionary Johari-Nohari framework
+// Johari-Nohari Workshop JavaScript
 
-Trait Explorer
-Discover all personality traits with detailed examples from history
-Start Exploring
+// Trait data structure based on uploaded content
+const TRAITS_DATA = {
+    'able': {
+        name: 'Able',
+        description: 'The capacity to accomplish tasks and achieve goals effectively',
+        spectrum: {
+            saint: {
+                title: 'Saint',
+                description: 'Uses abilities entirely for others\' benefit, denies self-recognition',
+                example: 'Mother Teresa using her organizational skills solely for the poor'
+            },
+            virtue: {
+                title: 'Virtue',
+                description: 'Uses skills to help community, accepts gratitude gracefully',
+                example: 'Doctors Without Borders volunteers'
+            },
+            neutral: {
+                title: 'Neutral',
+                description: 'Uses abilities for personal and professional success',
+                example: 'Steve Jobs building successful companies'
+            },
+            vice: {
+                title: 'Vice',
+                description: 'Uses abilities to gain unfair advantage over others',
+                example: 'Bernie Madoff using financial expertise to defraud'
+            },
+            sin: {
+                title: 'Sin',
+                description: 'Uses abilities to manipulate, exploit, and harm others',
+                example: 'Josef Mengele using medical knowledge for torture'
+            }
+        }
+    },
+    'accepting': {
+        name: 'Accepting',
+        description: 'The willingness to embrace others and situations as they are',
+        spectrum: {
+            saint: {
+                title: 'Saint',
+                description: 'Accepts all beings with unconditional love, sees divine in everyone',
+                example: 'Dalai Lama accepting even those who persecute Tibet'
+            },
+            virtue: {
+                title: 'Virtue',
+                description: 'Accepts people\'s flaws while encouraging growth',
+                example: 'Fred Rogers accepting all children unconditionally'
+            },
+            neutral: {
+                title: 'Neutral',
+                description: 'Accepts what\'s convenient, judges what\'s not',
+                example: 'Most people accepting family despite flaws'
+            },
+            vice: {
+                title: 'Vice',
+                description: 'Accepts allies, rejects those who disagree',
+                example: 'Fair-weather friends who abandon during hardship'
+            },
+            sin: {
+                title: 'Sin',
+                description: 'Accepts only those who serve their purposes, destroys the rest',
+                example: 'Hitler accepting only "pure" Aryans'
+            }
+        }
+    },
+    'adaptable': {
+        name: 'Adaptable',
+        description: 'The ability to adjust and change in response to new circumstances',
+        spectrum: {
+            saint: {
+                title: 'Saint',
+                description: 'Adapts to serve others\' needs, flows with divine will',
+                example: 'Gandhi adapting his methods to serve India\'s liberation'
+            },
+            virtue: {
+                title: 'Virtue',
+                description: 'Adapts to challenges with resilience and grace',
+                example: 'Nelson Mandela adapting from militant to reconciliation'
+            },
+            neutral: {
+                title: 'Neutral',
+                description: 'Adapts when necessary for survival or success',
+                example: 'Immigrants adapting to new cultures'
+            },
+            vice: {
+                title: 'Vice',
+                description: 'Adapts principles to justify selfish actions',
+                example: 'Politicians changing positions for votes'
+            },
+            sin: {
+                title: 'Sin',
+                description: 'Adapts identity completely to deceive and manipulate',
+                example: 'Ted Bundy adapting personalities to lure victims'
+            }
+        }
+    },
+    'bold': {
+        name: 'Bold',
+        description: 'The courage to take decisive action and face challenges head-on',
+        spectrum: {
+            saint: {
+                title: 'Saint',
+                description: 'Bold in defending the innocent, speaking truth to power',
+                example: 'Harriet Tubman boldly leading slaves to freedom'
+            },
+            virtue: {
+                title: 'Virtue',
+                description: 'Bold in pursuing justice and standing for principles',
+                example: 'Malala Yousafzai boldly advocating for education'
+            },
+            neutral: {
+                title: 'Neutral',
+                description: 'Bold in pursuing personal goals and ambitions',
+                example: 'Entrepreneurs taking business risks'
+            },
+            vice: {
+                title: 'Vice',
+                description: 'Bold in taking what they want regardless of rules',
+                example: 'Wall Street executives in 2008 crisis'
+            },
+            sin: {
+                title: 'Sin',
+                description: 'Bold in destroying others, reveling in cruelty',
+                example: 'Idi Amin boldly terrorizing Uganda'
+            }
+        }
+    },
+    'brave': {
+        name: 'Brave',
+        description: 'The willingness to face danger, difficulty, or pain without fear',
+        spectrum: {
+            saint: {
+                title: 'Saint',
+                description: 'Faces danger to protect others, fears nothing in service of love',
+                example: 'Oscar Schindler risking his life to save Jews'
+            },
+            virtue: {
+                title: 'Virtue',
+                description: 'Brave in doing what\'s right despite personal cost',
+                example: 'Firefighters running into burning buildings'
+            },
+            neutral: {
+                title: 'Neutral',
+                description: 'Brave when it benefits them, cowardly when it doesn\'t',
+                example: 'Athletes overcoming fear to compete'
+            },
+            vice: {
+                title: 'Vice',
+                description: 'Brave in breaking rules, cowardly when facing consequences',
+                example: 'Corporate whistleblowers who later recant'
+            },
+            sin: {
+                title: 'Sin',
+                description: 'Brave in attacking the vulnerable, cowardly when confronted',
+                example: 'School shooters targeting defenseless victims'
+            }
+        }
+    },
+    'calm': {
+        name: 'Calm',
+        description: 'The ability to remain peaceful and composed under pressure',
+        spectrum: {
+            saint: {
+                title: 'Saint',
+                description: 'Radiates peace that heals others, unshakeable serenity',
+                example: 'Thich Nhat Hanh maintaining peace through war'
+            },
+            virtue: {
+                title: 'Virtue',
+                description: 'Maintains composure under pressure, calms others',
+                example: 'Airline pilots staying calm during emergencies'
+            },
+            neutral: {
+                title: 'Neutral',
+                description: 'Generally even-tempered, occasionally reactive',
+                example: 'Most people in daily life'
+            },
+            vice: {
+                title: 'Vice',
+                description: 'Calm when winning, explosive when challenged',
+                example: 'Narcissists raging when criticized'
+            },
+            sin: {
+                title: 'Sin',
+                description: 'Calm while planning destruction, takes pleasure in others\' chaos',
+                example: 'Charles Manson calmly orchestrating murders'
+            }
+        }
+    },
+    'caring': {
+        name: 'Caring',
+        description: 'The genuine concern and compassion for others\' wellbeing',
+        spectrum: {
+            saint: {
+                title: 'Saint',
+                description: 'Cares for all beings equally, loves enemies as friends',
+                example: 'Albert Schweitzer caring for all life equally'
+            },
+            virtue: {
+                title: 'Virtue',
+                description: 'Cares deeply for family, friends, and community',
+                example: 'Nurses caring for patients compassionately'
+            },
+            neutral: {
+                title: 'Neutral',
+                description: 'Cares for inner circle, indifferent to others',
+                example: 'Parents caring primarily for their own children'
+            },
+            vice: {
+                title: 'Vice',
+                description: 'Cares only when it serves their interests',
+                example: 'Politicians caring about constituents only during elections'
+            },
+            sin: {
+                title: 'Sin',
+                description: 'Cares only about causing maximum harm to others',
+                example: 'Serial killers caring only about victim selection'
+            }
+        }
+    },
+    'cheerful': {
+        name: 'Cheerful',
+        description: 'The disposition to be happy, optimistic, and uplifting',
+        spectrum: {
+            saint: {
+                title: 'Saint',
+                description: 'Radiates joy that lifts everyone, finds light in darkness',
+                example: 'Desmond Tutu finding joy even during apartheid'
+            },
+            virtue: {
+                title: 'Virtue',
+                description: 'Brings positive energy to situations, uplifts others',
+                example: 'Robin Williams bringing joy to others despite depression'
+            },
+            neutral: {
+                title: 'Neutral',
+                description: 'Generally pleasant, mood depends on circumstances',
+                example: 'Most people on good days'
+            },
+            vice: {
+                title: 'Vice',
+                description: 'Cheerful when getting their way, bitter when not',
+                example: 'Spoiled children happy only when indulged'
+            },
+            sin: {
+                title: 'Sin',
+                description: 'Cheerful only when others are suffering',
+                example: 'Sadistic dictators smiling at public executions'
+            }
+        }
+    },
+    'clever': {
+        name: 'Clever',
+        description: 'The ability to think quickly and solve problems creatively',
+        spectrum: {
+            saint: {
+                title: 'Saint',
+                description: 'Uses cleverness to solve problems for others selflessly',
+                example: 'Benjamin Franklin using wit to unite colonies'
+            },
+            virtue: {
+                title: 'Virtue',
+                description: 'Uses intelligence to find creative solutions that help all',
+                example: 'Engineers solving humanitarian problems'
+            },
+            neutral: {
+                title: 'Neutral',
+                description: 'Uses cleverness for personal advancement',
+                example: 'Entrepreneurs building successful businesses'
+            },
+            vice: {
+                title: 'Vice',
+                description: 'Uses cleverness to deceive and manipulate others',
+                example: 'Con artists creating elaborate schemes'
+            },
+            sin: {
+                title: 'Sin',
+                description: 'Uses cleverness to devise maximum cruelty and destruction',
+                example: 'Nazi doctors devising efficient killing methods'
+            }
+        }
+    },
+    'confident': {
+        name: 'Confident',
+        description: 'The belief in one\'s abilities and self-assurance',
+        spectrum: {
+            saint: {
+                title: 'Saint',
+                description: 'Confident in love\'s power, humble about personal role',
+                example: 'Martin Luther King Jr. confident in justice but humble'
+            },
+            virtue: {
+                title: 'Virtue',
+                description: 'Confident in abilities while remaining humble',
+                example: 'Skilled surgeons confident but respectful'
+            },
+            neutral: {
+                title: 'Neutral',
+                description: 'Confident in skills and achievements',
+                example: 'Successful professionals'
+            },
+            vice: {
+                title: 'Vice',
+                description: 'Arrogant confidence that dismisses others',
+                example: 'Donald Trump\'s dismissive arrogance'
+            },
+            sin: {
+                title: 'Sin',
+                description: 'Confident in ability to destroy and dominate',
+                example: 'Stalin\'s confidence in his ability to eliminate enemies'
+            }
+        }
+    }
+};
 
-Guided Workshop
-Take a personalized journey through your personality spectrum
-Begin Workshop
+// Global state
+let currentSection = 'home';
+let workshopProgress = {
+    currentTraitIndex: 0,
+    responses: {},
+    completed: false
+};
+let filteredTraits = Object.keys(TRAITS_DATA);
 
-Your Results
-View your personality profile and growth recommendations
-View Results
-About the Johari-Nohari Framework
-This workshop combines the classic Johari Window with the Nohari Window, presenting each trait on a spectrum from Saint (pure virtue) to Sin (complete corruption). Each trait is illustrated with historical and contemporary examples to help you understand the full range of human behavior.
-Saint
-Virtue
-Neutral
-Vice
-Sin
-Trait Explorer
-Click on any trait to explore its full spectrum from Saint to Sin
-                            All Traits
-                            Positive Focus
-                            Negative Focus
-                            Balanced
-                        
+// Initialize the application
+document.addEventListener('DOMContentLoaded', function() {
+    initializeApp();
+});
 
+function initializeApp() {
+    // Load saved progress
+    loadProgress();
+    
+    // Set up navigation
+    setupNavigation();
+    
+    // Initialize sections
+    initializeExplorer();
+    initializeWorkshop();
+    initializeResults();
+    
+    // Show initial section
+    showSection('home');
+}
 
-×
+// Navigation functions
+function setupNavigation() {
+    const navButtons = document.querySelectorAll('.nav-btn');
+    navButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const section = btn.dataset.section;
+            showSection(section);
+        });
+    });
+}
 
-Personalized Workshop
+function showSection(sectionName) {
+    // Hide all sections
+    document.querySelectorAll('.section').forEach(section => {
+        section.classList.remove('active');
+    });
+    
+    // Show target section
+    document.getElementById(sectionName).classList.add('active');
+    
+    // Update navigation
+    document.querySelectorAll('.nav-btn').forEach(btn => {
+        btn.classList.remove('active');
+        if (btn.dataset.section === sectionName) {
+            btn.classList.add('active');
+        }
+    });
+    
+    currentSection = sectionName;
+    
+    // Section-specific initialization
+    if (sectionName === 'results') {
+        updateResults();
+    }
+}
 
-0 / 0
+// Explorer functions
+function initializeExplorer() {
+    renderTraitsGrid();
+    setupSearch();
+    setupFilter();
+}
 
+function renderTraitsGrid() {
+    const grid = document.getElementById('traits-grid');
+    grid.innerHTML = '';
+    
+    filteredTraits.forEach(traitKey => {
+        const trait = TRAITS_DATA[traitKey];
+        const card = createTraitCard(traitKey, trait);
+        grid.appendChild(card);
+    });
+}
 
-Where do you see yourself on this spectrum?
+function createTraitCard(traitKey, trait) {
+    const card = document.createElement('div');
+    card.className = 'trait-card';
+    card.onclick = () => openTraitModal(traitKey);
+    
+    // Get user's assessment if available
+    const userLevel = workshopProgress.responses[traitKey] || 'neutral';
+    const levelClass = userLevel.toLowerCase();
+    
+    card.innerHTML = `
+        <div class="trait-header">
+            <h3>${trait.name}</h3>
+            <div class="trait-level ${levelClass}"></div>
+        </div>
+        <p class="trait-description">${trait.description}</p>
+        <div class="trait-preview">
+            <div class="spectrum-mini">
+                <div class="spectrum-point saint"></div>
+                <div class="spectrum-point virtue"></div>
+                <div class="spectrum-point neutral ${userLevel === 'neutral' ? 'active' : ''}"></div>
+                <div class="spectrum-point vice"></div>
+                <div class="spectrum-point sin"></div>
+            </div>
+        </div>
+    `;
+    
+    return card;
+}
 
-Previous Next
-Your Personality Profile
-Retake Assessment Export Results
+function setupSearch() {
+    const searchInput = document.getElementById('trait-search');
+    searchInput.addEventListener('input', (e) => {
+        const query = e.target.value.toLowerCase();
+        filteredTraits = Object.keys(TRAITS_DATA).filter(key => {
+            const trait = TRAITS_DATA[key];
+            return trait.name.toLowerCase().includes(query) ||
+                   trait.description.toLowerCase().includes(query);
+        });
+        renderTraitsGrid();
+    });
+}
 
+function setupFilter() {
+    const filterSelect = document.getElementById('trait-filter');
+    filterSelect.addEventListener('change', (e) => {
+        const filter = e.target.value;
+        applyFilter(filter);
+    });
+}
 
+function applyFilter(filter) {
+    switch(filter) {
+        case 'positive':
+            filteredTraits = Object.keys(TRAITS_DATA).filter(key => {
+                const userLevel = workshopProgress.responses[key];
+                return userLevel === 'saint' || userLevel === 'virtue';
+            });
+            break;
+        case 'negative':
+            filteredTraits = Object.keys(TRAITS_DATA).filter(key => {
+                const userLevel = workshopProgress.responses[key];
+                return userLevel === 'vice' || userLevel === 'sin';
+            });
+            break;
+        case 'balanced':
+            filteredTraits = Object.keys(TRAITS_DATA).filter(key => {
+                const userLevel = workshopProgress.responses[key];
+                return userLevel === 'neutral';
+            });
+            break;
+        default:
+            filteredTraits = Object.keys(TRAITS_DATA);
+    }
+    renderTraitsGrid();
+}
 
-About
-A comprehensive personality assessment tool based on the Johari-Nohari framework with historical context and examples.
-Features
-	•	Interactive Trait Explorer
-	•	Personalized Assessment
-	•	Visual Results Dashboard
-	•	Historical Examples
-Resources
-	•	Johari Window Theory
-	•	Nohari Window Framework
-	•	Personality Psychology
-	•	Self-Development Tools
-© 2024 Johari-Nohari Workshop. Built for personal development and self-discovery.
+// Modal functions
+function openTraitModal(traitKey) {
+    const trait = TRAITS_DATA[traitKey];
+    const modal = document.getElementById('trait-modal');
+    const modalName = document.getElementById('modal-trait-name');
+    const spectrumDetail = document.getElementById('spectrum-detail');
+    
+    modalName.textContent = trait.name;
+    
+    spectrumDetail.innerHTML = '';
+    Object.entries(trait.spectrum).forEach(([level, data]) => {
+        const levelDiv = document.createElement('div');
+        levelDiv.className = `spectrum-level ${level}`;
+        levelDiv.innerHTML = `
+            <div class="level-header">
+                <h4>${data.title}</h4>
+            </div>
+            <p class="level-description">${data.description}</p>
+            <p class="level-example"><em>Example: ${data.example}</em></p>
+        `;
+        spectrumDetail.appendChild(levelDiv);
+    });
+    
+    modal.style.display = 'block';
+}
+
+function closeModal() {
+    document.getElementById('trait-modal').style.display = 'none';
+}
+
+// Workshop functions
+function initializeWorkshop() {
+    if (workshopProgress.completed) {
+        showWorkshopComplete();
+    } else {
+        showCurrentTrait();
+    }
+}
+
+function showCurrentTrait() {
+    const traitKeys = Object.keys(TRAITS_DATA);
+    const currentKey = traitKeys[workshopProgress.currentTraitIndex];
+    
+    if (!currentKey) {
+        completeWorkshop();
+        return;
+    }
+    
+    const trait = TRAITS_DATA[currentKey];
+    
+    // Update progress bar
+    updateProgressBar();
+    
+    // Update trait display
+    document.getElementById('current-trait-name').textContent = trait.name;
+    document.getElementById('current-trait-description').textContent = trait.description;
+    
+    // Create spectrum options
+    const optionsContainer = document.getElementById('spectrum-options');
+    optionsContainer.innerHTML = '';
+    
+    Object.entries(trait.spectrum).forEach(([level, data]) => {
+        const option = document.createElement('div');
+        option.className = `spectrum-option ${level}`;
+        if (workshopProgress.responses[currentKey] === level) {
+            option.classList.add('selected');
+        }
+        
+        option.onclick = () => selectSpectrumLevel(currentKey, level);
+        
+        option.innerHTML = `
+            <div class="option-header">
+                <h5>${data.title}</h5>
+            </div>
+            <p>${data.description}</p>
+            <small>${data.example}</small>
+        `;
+        
+        optionsContainer.appendChild(option);
+    });
+    
+    // Update navigation buttons
+    updateWorkshopNavigation();
+}
+
+function selectSpectrumLevel(traitKey, level) {
+    workshopProgress.responses[traitKey] = level;
+    saveProgress();
+    
+    // Update visual selection
+    document.querySelectorAll('.spectrum-option').forEach(opt => {
+        opt.classList.remove('selected');
+    });
+    event.target.closest('.spectrum-option').classList.add('selected');
+    
+    // Enable next button
+    document.getElementById('next-trait').disabled = false;
+}
+
+function updateProgressBar() {
+    const totalTraits = Object.keys(TRAITS_DATA).length;
+    const progress = (workshopProgress.currentTraitIndex / totalTraits) * 100;
+    
+    document.getElementById('workshop-progress').style.width = progress + '%';
+    document.getElementById('progress-text').textContent = 
+        `${workshopProgress.currentTraitIndex} / ${totalTraits}`;
+}
+
+function updateWorkshopNavigation() {
+    const prevBtn = document.getElementById('prev-trait');
+    const nextBtn = document.getElementById('next-trait');
+    
+    prevBtn.disabled = workshopProgress.currentTraitIndex === 0;
+    
+    const currentKey = Object.keys(TRAITS_DATA)[workshopProgress.currentTraitIndex];
+    nextBtn.disabled = !workshopProgress.responses[currentKey];
+    
+    if (workshopProgress.currentTraitIndex === Object.keys(TRAITS_DATA).length - 1) {
+        nextBtn.textContent = 'Complete';
+    } else {
+        nextBtn.textContent = 'Next';
+    }
+}
+
+function previousTrait() {
+    if (workshopProgress.currentTraitIndex > 0) {
+        workshopProgress.currentTraitIndex--;
+        showCurrentTrait();
+        saveProgress();
+    }
+}
+
+function nextTrait() {
+    const totalTraits = Object.keys(TRAITS_DATA).length;
+    
+    if (workshopProgress.currentTraitIndex < totalTraits - 1) {
+        workshopProgress.currentTraitIndex++;
+        showCurrentTrait();
+    } else {
+        completeWorkshop();
+    }
+    
+    saveProgress();
+}
+
+function completeWorkshop() {
+    workshopProgress.completed = true;
+    saveProgress();
+    showWorkshopComplete();
+}
+
+function showWorkshopComplete() {
+    document.getElementById('trait-assessment').style.display = 'none';
+    document.getElementById('workshop-complete').style.display = 'block';
+    updateProgressBar();
+}
+
+// Results functions
+function initializeResults() {
+    if (Object.keys(workshopProgress.responses).length > 0) {
+        updateResults();
+    }
+}
+
+function updateResults() {
+    const responses = workshopProgress.responses;
+    
+    if (Object.keys(responses).length === 0) {
+        document.getElementById('results-summary').innerHTML = 
+            '<p>Complete the workshop to see your results.</p>';
+        return;
+    }
+    
+    // Generate summary
+    generateResultsSummary(responses);
+    
+    // Generate insights
+    generateInsights(responses);
+    
+    // Update visualization
+    updatePersonalityChart(responses);
+}
+
+function generateResultsSummary(responses) {
+    const summary = document.getElementById('results-summary');
+    const levels = { saint: 0, virtue: 0, neutral: 0, vice: 0, sin: 0 };
+    
+    Object.values(responses).forEach(level => {
+        levels[level]++;
+    });
+    
+    const total = Object.keys(responses).length;
+    
+    summary.innerHTML = `
+        <div class="summary-stats">
+            <div class="stat saint">
+                <h4>Saint</h4>
+                <span>${levels.saint}</span>
+                <small>${Math.round((levels.saint/total)*100)}%</small>
+            </div>
+            <div class="stat virtue">
+                <h4>Virtue</h4>
+                <span>${levels.virtue}</span>
+                <small>${Math.round((levels.virtue/total)*100)}%</small>
+            </div>
+            <div class="stat neutral">
+                <h4>Neutral</h4>
+                <span>${levels.neutral}</span>
+                <small>${Math.round((levels.neutral/total)*100)}%</small>
+            </div>
+            <div class="stat vice">
+                <h4>Vice</h4>
+                <span>${levels.vice}</span>
+                <small>${Math.round((levels.vice/total)*100)}%</small>
+            </div>
+            <div class="stat sin">
+                <h4>Sin</h4>
+                <span>${levels.sin}</span>
+                <small>${Math.round((levels.sin/total)*100)}%</small>
+            </div>
+        </div>
+    `;
+}
+
+function generateInsights(responses) {
+    const insights = document.getElementById('results-insights');
+    const levels = { saint: 0, virtue: 0, neutral: 0, vice: 0, sin: 0 };
+    
+    Object.values(responses).forEach(level => {
+        levels[level]++;
+    });
+    
+    let primaryTendency = 'neutral';
+    let maxCount = levels.neutral;
+    
+    Object.entries(levels).forEach(([level, count]) => {
+        if (count > maxCount) {
+            maxCount = count;
+            primaryTendency = level;
+        }
+    });
+    
+    const strengthTraits = [];
+    const growthTraits = [];
+    
+    Object.entries(responses).forEach(([trait, level]) => {
+        if (level === 'saint' || level === 'virtue') {
+            strengthTraits.push(TRAITS_DATA[trait].name);
+        } else if (level === 'vice' || level === 'sin') {
+            growthTraits.push(TRAITS_DATA[trait].name);
+        }
+    });
+    
+    insights.innerHTML = `
+        <div class="insights-content">
+            <div class="insight-section">
+                <h4>Your Primary Tendency: ${primaryTendency.charAt(0).toUpperCase() + primaryTendency.slice(1)}</h4>
+                <p>Most of your traits fall into the ${primaryTendency} category, indicating ${getTendencyDescription(primaryTendency)}.</p>
+            </div>
+            
+            ${strengthTraits.length > 0 ? `
+            <div class="insight-section">
+                <h4>Your Strengths</h4>
+                <p>You show virtue or saintly qualities in: ${strengthTraits.join(', ')}</p>
+            </div>
+            ` : ''}
+            
+            ${growthTraits.length > 0 ? `
+            <div class="insight-section">
+                <h4>Growth Areas</h4>
+                <p>Consider developing these traits: ${growthTraits.join(', ')}</p>
+            </div>
+            ` : ''}
+            
+            <div class="insight-section">
+                <h4>Recommendations</h4>
+                <ul>
+                    <li>Focus on your strength traits to become a positive influence</li>
+                    <li>Work on balancing extreme tendencies toward the center</li>
+                    <li>Use your self-awareness for continuous growth</li>
+                    <li>Consider how your traits affect your relationships</li>
+                </ul>
+            </div>
+        </div>
+    `;
+}
+
+function getTendencyDescription(tendency) {
+    const descriptions = {
+        saint: 'an exceptionally altruistic and selfless approach to life',
+        virtue: 'a generally positive and ethical approach to most situations',
+        neutral: 'a balanced approach that adapts to circumstances',
+        vice: 'a tendency toward self-interest that may sometimes harm others',
+        sin: 'patterns that may be destructive to yourself and others'
+    };
+    return descriptions[tendency] || 'a unique personality profile';
+}
+
+function updatePersonalityChart(responses) {
+    const canvas = document.getElementById('personality-chart');
+    const ctx = canvas.getContext('2d');
+    
+    // Clear canvas
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    
+    // Simple bar chart representation
+    const levels = { saint: 0, virtue: 0, neutral: 0, vice: 0, sin: 0 };
+    Object.values(responses).forEach(level => {
+        levels[level]++;
+    });
+    
+    const colors = {
+        saint: '#4CAF50',
+        virtue: '#8BC34A',
+        neutral: '#FFC107',
+        vice: '#FF9800',
+        sin: '#F44336'
+    };
+    
+    const barWidth = 60;
+    const barSpacing = 20;
+    const maxHeight = 300;
+    const maxValue = Math.max(...Object.values(levels));
+    
+    let x = 40;
+    Object.entries(levels).forEach(([level, count]) => {
+        const height = (count / maxValue) * maxHeight;
+        const y = canvas.height - height - 40;
+        
+        // Draw bar
+        ctx.fillStyle = colors[level];
+        ctx.fillRect(x, y, barWidth, height);
+        
+        // Draw label
+        ctx.fillStyle = '#333';
+        ctx.font = '12px Inter';
+        ctx.textAlign = 'center';
+        ctx.fillText(level.charAt(0).toUpperCase() + level.slice(1), x + barWidth/2, canvas.height - 20);
+        
+        // Draw value
+        ctx.fillText(count.toString(), x + barWidth/2, y - 10);
+        
+        x += barWidth + barSpacing;
+    });
+}
+
+// Utility functions
+function resetWorkshop() {
+    workshopProgress = {
+        currentTraitIndex: 0,
+        responses: {},
+        completed: false
+    };
+    saveProgress();
+    
+    document.getElementById('trait-assessment').style.display = 'block';
+    document.getElementById('workshop-complete').style.display = 'none';
+    
+    showCurrentTrait();
+    renderTraitsGrid();
+}
+
+function exportResults() {
+    const results = {
+        timestamp: new Date().toISOString(),
+        responses: workshopProgress.responses,
+        summary: generateExportSummary()
+    };
+    
+    const dataStr = JSON.stringify(results, null, 2);
+    const dataBlob = new Blob([dataStr], {type: 'application/json'});
+    
+    const link = document.createElement('a');
+    link.href = URL.createObjectURL(dataBlob);
+    link.download = 'johari-nohari-results.json';
+    link.click();
+}
+
+function generateExportSummary() {
+    const responses = workshopProgress.responses;
+    const levels = { saint: 0, virtue: 0, neutral: 0, vice: 0, sin: 0 };
+    
+    Object.values(responses).forEach(level => {
+        levels[level]++;
+    });
+    
+    return {
+        totalTraits: Object.keys(responses).length,
+        distribution: levels,
+        completedAt: new Date().toISOString()
+    };
+}
+
+function saveProgress() {
+    localStorage.setItem('johari-workshop-progress', JSON.stringify(workshopProgress));
+}
+
+function loadProgress() {
+    const saved = localStorage.getItem('johari-workshop-progress');
+    if (saved) {
+        workshopProgress = JSON.parse(saved);
+    }
+}
+
+// Event listeners for modal
+window.onclick = function(event) {
+    const modal = document.getElementById('trait-modal');
+    if (event.target === modal) {
+        closeModal();
+    }
+}
