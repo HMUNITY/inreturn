@@ -1,1 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Johari-Nohari Personality Workshop</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <h1><i class="fas fa-mirror"></i> Johari-Nohari Workshop</h1>
+                    <p>Discover Your Personality Spectrum</p>
+                </div>
+                <nav class="nav">
+                    <button class="nav-btn active" data-section="home">Home</button>
+                    <button class="nav-btn" data-section="explorer">Explorer</button>
+                    <button class="nav-btn" data-section="workshop">Workshop</button>
+                    <button class="nav-btn" data-section="results">Results</button>
+                </nav>
+            </div>
+        </div>
+    </header>
 
+    <!-- Main Content -->
+    <main class="main">
+        <!-- Home Section -->
+        <section id="home" class="section active">
+            <div class="container">
+                <div class="hero">
+                    <h2>Welcome to Your Personality Journey</h2>
+                    <p class="hero-subtitle">Explore the spectrum of human traits from Saint to Sin through the revolutionary Johari-Nohari framework</p>
+                    
+                    <div class="feature-grid">
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-compass"></i>
+                            </div>
+                            <h3>Trait Explorer</h3>
+                            <p>Discover all personality traits with detailed examples from history</p>
+                            <button class="btn btn-primary" onclick="showSection('explorer')">Start Exploring</button>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-graduation-cap"></i>
+                            </div>
+                            <h3>Guided Workshop</h3>
+                            <p>Take a personalized journey through your personality spectrum</p>
+                            <button class="btn btn-primary" onclick="showSection('workshop')">Begin Workshop</button>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-chart-radar"></i>
+                            </div>
+                            <h3>Your Results</h3>
+                            <p>View your personality profile and growth recommendations</p>
+                            <button class="btn btn-secondary" onclick="showSection('results')">View Results</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="about">
+                    <h3>About the Johari-Nohari Framework</h3>
+                    <p>This workshop combines the classic Johari Window with the Nohari Window, presenting each trait on a spectrum from Saint (pure virtue) to Sin (complete corruption). Each trait is illustrated with historical and contemporary examples to help you understand the full range of human behavior.</p>
+                    
+                    <div class="spectrum-preview">
+                        <div class="spectrum-item saint">Saint</div>
+                        <div class="spectrum-item virtue">Virtue</div>
+                        <div class="spectrum-item neutral">Neutral</div>
+                        <div class="spectrum-item vice">Vice</div>
+                        <div class="spectrum-item sin">Sin</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Explorer Section -->
+        <section id="explorer" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Trait Explorer</h2>
+                    <p>Click on any trait to explore its full spectrum from Saint to Sin</p>
+                    <div class="search-filter">
+                        <input type="text" id="trait-search" placeholder="Search traits..." class="search-input">
+                        <select id="trait-filter" class="filter-select">
+                            <option value="all">All Traits</option>
+                            <option value="positive">Positive Focus</option>
+                            <option value="negative">Negative Focus</option>
+                            <option value="balanced">Balanced</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="traits-grid" id="traits-grid">
+                    <!-- Trait cards will be dynamically generated here -->
+                </div>
+                
+                <!-- Trait Detail Modal -->
+                <div id="trait-modal" class="modal">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h3 id="modal-trait-name"></h3>
+                            <button class="modal-close" onclick="closeModal()">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="spectrum-detail" id="spectrum-detail">
+                                <!-- Spectrum details will be populated here -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Workshop Section -->
+        <section id="workshop" class="section">
+            <div class="container">
+                <div class="workshop-header">
+                    <h2>Personalized Workshop</h2>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="workshop-progress"></div>
+                        <span class="progress-text" id="progress-text">0 / 0</span>
+                    </div>
+                </div>
+                
+                <div class="workshop-content">
+                    <div class="trait-assessment" id="trait-assessment">
+                        <div class="assessment-card">
+                            <h3 id="current-trait-name"></h3>
+                            <p id="current-trait-description"></p>
+                            
+                            <div class="spectrum-selector">
+                                <h4>Where do you see yourself on this spectrum?</h4>
+                                <div class="spectrum-options" id="spectrum-options">
+                                    <!-- Spectrum options will be generated here -->
+                                </div>
+                            </div>
+                            
+                            <div class="assessment-controls">
+                                <button class="btn btn-secondary" id="prev-trait" onclick="previousTrait()">Previous</button>
+                                <button class="btn btn-primary" id="next-trait" onclick="nextTrait()">Next</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="workshop-complete" id="workshop-complete" style="display: none;">
+                        <div class="completion-card">
+                            <i class="fas fa-check-circle"></i>
+                            <h3>Workshop Complete!</h3>
+                            <p>You've assessed all traits. View your results to see your personality profile.</p>
+                            <button class="btn btn-primary" onclick="showSection('results')">View Results</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Results Section -->
+        <section id="results" class="section">
+            <div class="container">
+                <div class="results-header">
+                    <h2>Your Personality Profile</h2>
+                    <div class="results-actions">
+                        <button class="btn btn-secondary" onclick="resetWorkshop()">Retake Assessment</button>
+                        <button class="btn btn-primary" onclick="exportResults()">Export Results</button>
+                    </div>
+                </div>
+                
+                <div class="results-content">
+                    <div class="results-summary" id="results-summary">
+                        <!-- Results summary will be populated here -->
+                    </div>
+                    
+                    <div class="results-visualization">
+                        <canvas id="personality-chart" width="400" height="400"></canvas>
+                    </div>
+                    
+                    <div class="results-insights" id="results-insights">
+                        <!-- Insights and recommendations will be populated here -->
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>About</h4>
+                    <p>A comprehensive personality assessment tool based on the Johari-Nohari framework with historical context and examples.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Features</h4>
+                    <ul>
+                        <li>Interactive Trait Explorer</li>
+                        <li>Personalized Assessment</li>
+                        <li>Visual Results Dashboard</li>
+                        <li>Historical Examples</li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li>Johari Window Theory</li>
+                        <li>Nohari Window Framework</li>
+                        <li>Personality Psychology</li>
+                        <li>Self-Development Tools</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Johari-Nohari Workshop. Built for personal development and self-discovery.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Loading Overlay -->
+    <div id="loading-overlay" class="loading-overlay" style="display: none;">
+        <div class="loading-spinner">
+            <i class="fas fa-spinner fa-spin"></i>
+            <p>Loading your personality data...</p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
