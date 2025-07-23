@@ -3,233 +3,314 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Johari-Nohari Personality Workshop</title>
+    <title>Cosmic Self-Alignment Workshop</title>
+    <meta name="description" content="Navigate your consciousness through the multiverse and discover your cosmic signature">
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;500;600;700&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- Header -->
-    <header class="header">
+    <!-- Cosmic Background Elements -->
+    <div class="cosmic-background">
+        <div class="starfield"></div>
+        <div class="nebula-layer"></div>
+        <div class="quantum-particles"></div>
+    </div>
+
+    <!-- Quantum Navigation Array -->
+    <header class="quantum-header">
         <div class="container">
             <div class="header-content">
-                <div class="logo">
-                    <h1><i class="fas fa-mirror"></i> Johari-Nohari Workshop</h1>
-                    <p>Discover Your Personality Spectrum</p>
+                <div class="cosmic-logo">
+                    <div class="logo-symbol">⚛</div>
+                    <div class="logo-text">
+                        <h1>Cosmic Self-Alignment Workshop</h1>
+                        <p>Navigate Your Consciousness Through the Multiverse</p>
+                    </div>
                 </div>
-                <nav class="nav">
-                    <button class="nav-btn active" data-section="home">Home</button>
-                    <button class="nav-btn" data-section="explorer">Explorer</button>
-                    <button class="nav-btn" data-section="workshop">Workshop</button>
-                    <button class="nav-btn" data-section="results">Results</button>
+                <nav class="quantum-nav">
+                    <button class="nav-btn active" data-section="home">
+                        <span class="nav-icon">🏠</span>
+                        <span class="nav-text">Home Base</span>
+                    </button>
+                    <button class="nav-btn" data-section="explorer">
+                        <span class="nav-icon">🔬</span>
+                        <span class="nav-text">Quantum Explorer</span>
+                    </button>
+                    <button class="nav-btn" data-section="workshop">
+                        <span class="nav-icon">🧬</span>
+                        <span class="nav-text">Dimensional Scan</span>
+                    </button>
+                    <button class="nav-btn" data-section="results">
+                        <span class="nav-icon">📊</span>
+                        <span class="nav-text">Cosmic Signature</span>
+                    </button>
                 </nav>
             </div>
         </div>
     </header>
 
-    <!-- Main Content -->
-    <main class="main">
-        <!-- Home Section -->
+    <!-- Main Quantum Interface -->
+    <main class="quantum-main">
+        <!-- Home Base Section -->
         <section id="home" class="section active">
             <div class="container">
-                <div class="hero">
-                    <h2>Welcome to Your Personality Journey</h2>
-                    <p class="hero-subtitle">Explore the spectrum of human traits from Saint to Sin through the revolutionary Johari-Nohari framework</p>
-                    
-                    <div class="feature-grid">
-                        <div class="feature-card">
-                            <div class="feature-icon">
-                                <i class="fas fa-compass"></i>
-                            </div>
-                            <h3>Trait Explorer</h3>
-                            <p>Discover all personality traits with detailed examples from history</p>
-                            <button class="btn btn-primary" onclick="showSection('explorer')">Start Exploring</button>
-                        </div>
+                <!-- Hero Quantum Field -->
+                <div class="hero-field">
+                    <div class="hero-content">
+                        <h2 class="cosmic-title">Welcome to Your Cosmic Journey</h2>
+                        <p class="hero-subtitle">Discover your consciousness signature across infinite dimensional frequencies. Navigate through quantum entanglements and align your cosmic energy with universal harmony.</p>
                         
-                        <div class="feature-card">
-                            <div class="feature-icon">
-                                <i class="fas fa-graduation-cap"></i>
+                        <!-- Dimensional Frequency Preview -->
+                        <div class="frequency-preview">
+                            <div class="frequency-item singularity">
+                                <div class="freq-symbol">✨</div>
+                                <span>Singularity of Benevolence</span>
                             </div>
-                            <h3>Guided Workshop</h3>
-                            <p>Take a personalized journey through your personality spectrum</p>
-                            <button class="btn btn-primary" onclick="showSection('workshop')">Begin Workshop</button>
-                        </div>
-                        
-                        <div class="feature-card">
-                            <div class="feature-icon">
-                                <i class="fas fa-chart-radar"></i>
+                            <div class="frequency-item positive">
+                                <div class="freq-symbol">🌟</div>
+                                <span>Positive Gravitational Pull</span>
                             </div>
-                            <h3>Your Results</h3>
-                            <p>View your personality profile and growth recommendations</p>
-                            <button class="btn btn-secondary" onclick="showSection('results')">View Results</button>
+                            <div class="frequency-item quantum">
+                                <div class="freq-symbol">⚛</div>
+                                <span>Quantum Superposition</span>
+                            </div>
+                            <div class="frequency-item negative">
+                                <div class="freq-symbol">⚡</div>
+                                <span>Negative Energy Perturbation</span>
+                            </div>
+                            <div class="frequency-item void">
+                                <div class="freq-symbol">🌑</div>
+                                <span>Black Hole of Self-Absorption</span>
+                            </div>
                         </div>
                     </div>
                 </div>
-                
-                <div class="about">
-                    <h3>About the Johari-Nohari Framework</h3>
-                    <p>This workshop combines the classic Johari Window with the Nohari Window, presenting each trait on a spectrum from Saint (pure virtue) to Sin (complete corruption). Each trait is illustrated with historical and contemporary examples to help you understand the full range of human behavior.</p>
-                    
-                    <div class="spectrum-preview">
-                        <div class="spectrum-item saint">Saint</div>
-                        <div class="spectrum-item virtue">Virtue</div>
-                        <div class="spectrum-item neutral">Neutral</div>
-                        <div class="spectrum-item vice">Vice</div>
-                        <div class="spectrum-item sin">Sin</div>
+
+                <!-- Quantum Interface Grid -->
+                <div class="quantum-grid">
+                    <div class="quantum-card">
+                        <div class="card-energy-field">
+                            <div class="energy-icon">🔬</div>
+                        </div>
+                        <h3>Quantum Entanglement Explorer</h3>
+                        <p>Navigate through consciousness fields and discover the dimensional frequencies that define your cosmic essence. Each field represents a fundamental aspect of your multidimensional being.</p>
+                        <button class="quantum-btn primary" onclick="showSection('explorer')">
+                            <span>Begin Exploration</span>
+                            <div class="btn-energy"></div>
+                        </button>
                     </div>
+
+                    <div class="quantum-card">
+                        <div class="card-energy-field">
+                            <div class="energy-icon">🧬</div>
+                        </div>
+                        <h3>Dimensional Calibration Protocol</h3>
+                        <p>Undergo a personalized consciousness alignment scanning process. Navigate through each quantum field and calibrate your dimensional frequencies for optimal cosmic resonance.</p>
+                        <button class="quantum-btn primary" onclick="showSection('workshop')">
+                            <span>Start Calibration</span>
+                            <div class="btn-energy"></div>
+                        </button>
+                    </div>
+
+                    <div class="quantum-card">
+                        <div class="card-energy-field">
+                            <div class="energy-icon">📊</div>
+                        </div>
+                        <h3>Cosmic Signature Analysis</h3>
+                        <p>View your complete multidimensional consciousness profile. Understand your dominant frequencies, cosmic alignment patterns, and receive guidance for further dimensional evolution.</p>
+                        <button class="quantum-btn secondary" onclick="showSection('results')">
+                            <span>View Signature</span>
+                            <div class="btn-energy"></div>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Cosmic Framework Explanation -->
+                <div class="cosmic-framework">
+                    <h3>About the Cosmic Self-Alignment Framework</h3>
+                    <p>This quantum consciousness workshop transcends traditional personality assessment by mapping your awareness across multiple dimensional frequencies within the infinite multiverse of consciousness. Each quantum entanglement represents a fundamental force in your cosmic signature, oscillating between states of universal harmony and dimensional chaos.</p>
+                    
+                    <p>Through advanced dimensional calibration protocols, you will navigate the quantum foam of your potential, discovering hidden aspects of your consciousness that exist beyond the observable universe of your current self-awareness. The resulting cosmic signature reveals your unique vibrational pattern and provides alignment protocols for achieving optimal resonance with universal consciousness.</p>
                 </div>
             </div>
         </section>
 
-        <!-- Explorer Section -->
+        <!-- Quantum Explorer Section -->
         <section id="explorer" class="section">
             <div class="container">
                 <div class="section-header">
-                    <h2>Trait Explorer</h2>
-                    <p>Click on any trait to explore its full spectrum from Saint to Sin</p>
-                    <div class="search-filter">
-                        <input type="text" id="trait-search" placeholder="Search traits..." class="search-input">
-                        <select id="trait-filter" class="filter-select">
-                            <option value="all">All Traits</option>
-                            <option value="positive">Positive Focus</option>
-                            <option value="negative">Negative Focus</option>
-                            <option value="balanced">Balanced</option>
+                    <h2>Quantum Entanglement Explorer</h2>
+                    <p>Navigate through consciousness fields and explore their dimensional frequency spectrums</p>
+                </div>
+
+                <!-- Quantum Field Scanner -->
+                <div class="quantum-scanner">
+                    <div class="scanner-interface">
+                        <input type="text" id="field-scanner" class="quantum-input" placeholder="Scan quantum fields...">
+                        <select id="frequency-filter" class="quantum-select">
+                            <option value="all">All Fields</option>
+                            <option value="positive">Positive Resonance</option>
+                            <option value="negative">Negative Perturbation</option>
+                            <option value="balanced">Quantum Superposition</option>
                         </select>
                     </div>
                 </div>
-                
-                <div class="traits-grid" id="traits-grid">
-                    <!-- Trait cards will be dynamically generated here -->
-                </div>
-                
-                <!-- Trait Detail Modal -->
-                <div id="trait-modal" class="modal">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h3 id="modal-trait-name"></h3>
-                            <button class="modal-close" onclick="closeModal()">&times;</button>
-                        </div>
-                        <div class="modal-body">
-                            <div class="spectrum-detail" id="spectrum-detail">
-                                <!-- Spectrum details will be populated here -->
-                            </div>
-                        </div>
-                    </div>
+
+                <!-- Consciousness Fields Grid -->
+                <div id="fields-grid" class="fields-grid">
+                    <!-- Quantum field cards will be dynamically generated here -->
                 </div>
             </div>
         </section>
 
-        <!-- Workshop Section -->
+        <!-- Dimensional Scan Section -->
         <section id="workshop" class="section">
             <div class="container">
-                <div class="workshop-header">
-                    <h2>Personalized Workshop</h2>
-                    <div class="progress-bar">
-                        <div class="progress-fill" id="workshop-progress"></div>
-                        <span class="progress-text" id="progress-text">0 / 0</span>
+                <div class="calibration-header">
+                    <h2>Dimensional Calibration Protocol</h2>
+                    <div class="energy-alignment-progress">
+                        <div class="progress-container">
+                            <div id="alignment-beam" class="alignment-beam"></div>
+                        </div>
+                        <span id="calibration-status" class="calibration-status">0 / 10</span>
                     </div>
                 </div>
-                
-                <div class="workshop-content">
-                    <div class="trait-assessment" id="trait-assessment">
-                        <div class="assessment-card">
-                            <h3 id="current-trait-name"></h3>
-                            <p id="current-trait-description"></p>
-                            
-                            <div class="spectrum-selector">
-                                <h4>Where do you see yourself on this spectrum?</h4>
-                                <div class="spectrum-options" id="spectrum-options">
-                                    <!-- Spectrum options will be generated here -->
-                                </div>
+
+                <!-- Field Assessment Interface -->
+                <div id="field-assessment" class="field-assessment">
+                    <div class="assessment-matrix">
+                        <h3 id="current-field-name">Initializing Quantum Field...</h3>
+                        <p id="current-field-description">Preparing dimensional calibration protocols...</p>
+
+                        <!-- Frequency Selector -->
+                        <div class="frequency-selector">
+                            <h4>Select Your Dimensional Frequency</h4>
+                            <div id="frequency-options" class="frequency-options">
+                                <!-- Frequency options will be dynamically generated -->
                             </div>
-                            
-                            <div class="assessment-controls">
-                                <button class="btn btn-secondary" id="prev-trait" onclick="previousTrait()">Previous</button>
-                                <button class="btn btn-primary" id="next-trait" onclick="nextTrait()">Next</button>
-                            </div>
+                        </div>
+
+                        <!-- Calibration Controls -->
+                        <div class="calibration-controls">
+                            <button id="prev-field" class="quantum-btn secondary" onclick="previousField()">
+                                <span>Previous Field</span>
+                            </button>
+                            <button id="next-field" class="quantum-btn primary" onclick="nextField()" disabled>
+                                <span>Next Field</span>
+                            </button>
                         </div>
                     </div>
-                    
-                    <div class="workshop-complete" id="workshop-complete" style="display: none;">
-                        <div class="completion-card">
-                            <i class="fas fa-check-circle"></i>
-                            <h3>Workshop Complete!</h3>
-                            <p>You've assessed all traits. View your results to see your personality profile.</p>
-                            <button class="btn btn-primary" onclick="showSection('results')">View Results</button>
-                        </div>
+                </div>
+
+                <!-- Calibration Complete Interface -->
+                <div id="calibration-complete" class="calibration-complete" style="display: none;">
+                    <div class="completion-matrix">
+                        <div class="cosmic-achievement">🌌</div>
+                        <h3>Dimensional Calibration Complete</h3>
+                        <p>Your consciousness signature has been successfully mapped across all quantum fields. Navigate to your Cosmic Signature Analysis to explore your multidimensional profile.</p>
+                        <button class="quantum-btn primary" onclick="showSection('results')">
+                            <span>View Cosmic Signature</span>
+                            <div class="btn-energy"></div>
+                        </button>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Results Section -->
+        <!-- Cosmic Signature Section -->
         <section id="results" class="section">
             <div class="container">
-                <div class="results-header">
-                    <h2>Your Personality Profile</h2>
-                    <div class="results-actions">
-                        <button class="btn btn-secondary" onclick="resetWorkshop()">Retake Assessment</button>
-                        <button class="btn btn-primary" onclick="exportResults()">Export Results</button>
+                <div class="signature-header">
+                    <h2>Your Cosmic Consciousness Signature</h2>
+                    <div class="signature-actions">
+                        <button class="quantum-btn secondary" onclick="resetCalibration()">
+                            <span>Recalibrate Signature</span>
+                        </button>
+                        <button class="quantum-btn primary" onclick="exportCosmicData()">
+                            <span>Export Cosmic Data</span>
+                        </button>
                     </div>
                 </div>
-                
-                <div class="results-content">
-                    <div class="results-summary" id="results-summary">
-                        <!-- Results summary will be populated here -->
+
+                <!-- Signature Analysis Grid -->
+                <div class="signature-grid">
+                    <!-- Frequency Distribution -->
+                    <div class="signature-panel">
+                        <h3>Dimensional Frequency Distribution</h3>
+                        <div id="frequency-distribution" class="frequency-distribution">
+                            <!-- Distribution stats will be generated here -->
+                        </div>
                     </div>
-                    
-                    <div class="results-visualization">
-                        <canvas id="personality-chart" width="400" height="400"></canvas>
+
+                    <!-- Multidimensional Visualization -->
+                    <div class="signature-panel">
+                        <h3>Multidimensional Resonance Chart</h3>
+                        <div class="chart-container">
+                            <canvas id="resonance-chart" width="400" height="300"></canvas>
+                        </div>
                     </div>
-                    
-                    <div class="results-insights" id="results-insights">
-                        <!-- Insights and recommendations will be populated here -->
+
+                    <!-- Cosmic Alignment Analysis -->
+                    <div class="signature-panel full-width">
+                        <h3>Cosmic Alignment Analysis</h3>
+                        <div id="alignment-insights" class="alignment-insights">
+                            <!-- Insights will be generated here -->
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
     </main>
 
-    <!-- Footer -->
-    <footer class="footer">
+    <!-- Holographic Data Projection Modal -->
+    <div id="field-modal" class="holographic-modal">
+        <div class="modal-projection">
+            <div class="projection-header">
+                <h3 id="modal-field-name">Quantum Field Analysis</h3>
+                <button class="close-projection" onclick="closeProjection()">&times;</button>
+            </div>
+            <div class="projection-content">
+                <div id="frequency-spectrum" class="frequency-spectrum">
+                    <!-- Detailed frequency analysis will be displayed here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Quantum Footer -->
+    <footer class="quantum-footer">
         <div class="container">
-            <div class="footer-content">
+            <div class="footer-grid">
                 <div class="footer-section">
-                    <h4>About</h4>
-                    <p>A comprehensive personality assessment tool based on the Johari-Nohari framework with historical context and examples.</p>
+                    <h4>Cosmic Navigation</h4>
+                    <p>A multidimensional consciousness assessment framework based on quantum entanglement theory and cosmic alignment principles.</p>
                 </div>
                 <div class="footer-section">
-                    <h4>Features</h4>
+                    <h4>Quantum Features</h4>
                     <ul>
-                        <li>Interactive Trait Explorer</li>
-                        <li>Personalized Assessment</li>
-                        <li>Visual Results Dashboard</li>
-                        <li>Historical Examples</li>
+                        <li>Interactive Consciousness Field Explorer</li>
+                        <li>Dimensional Calibration Assessment</li>
+                        <li>Multidimensional Resonance Visualization</li>
+                        <li>Cosmic Signature Analysis</li>
                     </ul>
                 </div>
                 <div class="footer-section">
-                    <h4>Resources</h4>
+                    <h4>Universal Resources</h4>
                     <ul>
-                        <li>Johari Window Theory</li>
-                        <li>Nohari Window Framework</li>
-                        <li>Personality Psychology</li>
-                        <li>Self-Development Tools</li>
+                        <li>Quantum Consciousness Theory</li>
+                        <li>Dimensional Frequency Framework</li>
+                        <li>Cosmic Alignment Protocols</li>
+                        <li>Multidimensional Self-Discovery</li>
                     </ul>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2024 Johari-Nohari Workshop. Built for personal development and self-discovery.</p>
+                <p>&copy; 2024 Cosmic Self-Alignment Workshop. Navigating consciousness through infinite dimensions.</p>
             </div>
         </div>
     </footer>
-
-    <!-- Loading Overlay -->
-    <div id="loading-overlay" class="loading-overlay" style="display: none;">
-        <div class="loading-spinner">
-            <i class="fas fa-spinner fa-spin"></i>
-            <p>Loading your personality data...</p>
-        </div>
-    </div>
 
     <script src="script.js"></script>
 </body>
