@@ -1,887 +1,1514 @@
-// Johari-Nohari Workshop JavaScript
+/* Cosmic Self-Alignment Workshop CSS */
 
-// Trait data structure based on uploaded content
-const TRAITS_DATA = {
-    'able': {
-        name: 'Able',
-        description: 'The capacity to accomplish tasks and achieve goals effectively',
-        spectrum: {
-            saint: {
-                title: 'Saint',
-                description: 'Uses abilities entirely for others\' benefit, denies self-recognition',
-                example: 'Mother Teresa using her organizational skills solely for the poor'
-            },
-            virtue: {
-                title: 'Virtue',
-                description: 'Uses skills to help community, accepts gratitude gracefully',
-                example: 'Doctors Without Borders volunteers'
-            },
-            neutral: {
-                title: 'Neutral',
-                description: 'Uses abilities for personal and professional success',
-                example: 'Steve Jobs building successful companies'
-            },
-            vice: {
-                title: 'Vice',
-                description: 'Uses abilities to gain unfair advantage over others',
-                example: 'Bernie Madoff using financial expertise to defraud'
-            },
-            sin: {
-                title: 'Sin',
-                description: 'Uses abilities to manipulate, exploit, and harm others',
-                example: 'Josef Mengele using medical knowledge for torture'
-            }
-        }
-    },
-    'accepting': {
-        name: 'Accepting',
-        description: 'The willingness to embrace others and situations as they are',
-        spectrum: {
-            saint: {
-                title: 'Saint',
-                description: 'Accepts all beings with unconditional love, sees divine in everyone',
-                example: 'Dalai Lama accepting even those who persecute Tibet'
-            },
-            virtue: {
-                title: 'Virtue',
-                description: 'Accepts people\'s flaws while encouraging growth',
-                example: 'Fred Rogers accepting all children unconditionally'
-            },
-            neutral: {
-                title: 'Neutral',
-                description: 'Accepts what\'s convenient, judges what\'s not',
-                example: 'Most people accepting family despite flaws'
-            },
-            vice: {
-                title: 'Vice',
-                description: 'Accepts allies, rejects those who disagree',
-                example: 'Fair-weather friends who abandon during hardship'
-            },
-            sin: {
-                title: 'Sin',
-                description: 'Accepts only those who serve their purposes, destroys the rest',
-                example: 'Hitler accepting only "pure" Aryans'
-            }
-        }
-    },
-    'adaptable': {
-        name: 'Adaptable',
-        description: 'The ability to adjust and change in response to new circumstances',
-        spectrum: {
-            saint: {
-                title: 'Saint',
-                description: 'Adapts to serve others\' needs, flows with divine will',
-                example: 'Gandhi adapting his methods to serve India\'s liberation'
-            },
-            virtue: {
-                title: 'Virtue',
-                description: 'Adapts to challenges with resilience and grace',
-                example: 'Nelson Mandela adapting from militant to reconciliation'
-            },
-            neutral: {
-                title: 'Neutral',
-                description: 'Adapts when necessary for survival or success',
-                example: 'Immigrants adapting to new cultures'
-            },
-            vice: {
-                title: 'Vice',
-                description: 'Adapts principles to justify selfish actions',
-                example: 'Politicians changing positions for votes'
-            },
-            sin: {
-                title: 'Sin',
-                description: 'Adapts identity completely to deceive and manipulate',
-                example: 'Ted Bundy adapting personalities to lure victims'
-            }
-        }
-    },
-    'bold': {
-        name: 'Bold',
-        description: 'The courage to take decisive action and face challenges head-on',
-        spectrum: {
-            saint: {
-                title: 'Saint',
-                description: 'Bold in defending the innocent, speaking truth to power',
-                example: 'Harriet Tubman boldly leading slaves to freedom'
-            },
-            virtue: {
-                title: 'Virtue',
-                description: 'Bold in pursuing justice and standing for principles',
-                example: 'Malala Yousafzai boldly advocating for education'
-            },
-            neutral: {
-                title: 'Neutral',
-                description: 'Bold in pursuing personal goals and ambitions',
-                example: 'Entrepreneurs taking business risks'
-            },
-            vice: {
-                title: 'Vice',
-                description: 'Bold in taking what they want regardless of rules',
-                example: 'Wall Street executives in 2008 crisis'
-            },
-            sin: {
-                title: 'Sin',
-                description: 'Bold in destroying others, reveling in cruelty',
-                example: 'Idi Amin boldly terrorizing Uganda'
-            }
-        }
-    },
-    'brave': {
-        name: 'Brave',
-        description: 'The willingness to face danger, difficulty, or pain without fear',
-        spectrum: {
-            saint: {
-                title: 'Saint',
-                description: 'Faces danger to protect others, fears nothing in service of love',
-                example: 'Oscar Schindler risking his life to save Jews'
-            },
-            virtue: {
-                title: 'Virtue',
-                description: 'Brave in doing what\'s right despite personal cost',
-                example: 'Firefighters running into burning buildings'
-            },
-            neutral: {
-                title: 'Neutral',
-                description: 'Brave when it benefits them, cowardly when it doesn\'t',
-                example: 'Athletes overcoming fear to compete'
-            },
-            vice: {
-                title: 'Vice',
-                description: 'Brave in breaking rules, cowardly when facing consequences',
-                example: 'Corporate whistleblowers who later recant'
-            },
-            sin: {
-                title: 'Sin',
-                description: 'Brave in attacking the vulnerable, cowardly when confronted',
-                example: 'School shooters targeting defenseless victims'
-            }
-        }
-    },
-    'calm': {
-        name: 'Calm',
-        description: 'The ability to remain peaceful and composed under pressure',
-        spectrum: {
-            saint: {
-                title: 'Saint',
-                description: 'Radiates peace that heals others, unshakeable serenity',
-                example: 'Thich Nhat Hanh maintaining peace through war'
-            },
-            virtue: {
-                title: 'Virtue',
-                description: 'Maintains composure under pressure, calms others',
-                example: 'Airline pilots staying calm during emergencies'
-            },
-            neutral: {
-                title: 'Neutral',
-                description: 'Generally even-tempered, occasionally reactive',
-                example: 'Most people in daily life'
-            },
-            vice: {
-                title: 'Vice',
-                description: 'Calm when winning, explosive when challenged',
-                example: 'Narcissists raging when criticized'
-            },
-            sin: {
-                title: 'Sin',
-                description: 'Calm while planning destruction, takes pleasure in others\' chaos',
-                example: 'Charles Manson calmly orchestrating murders'
-            }
-        }
-    },
-    'caring': {
-        name: 'Caring',
-        description: 'The genuine concern and compassion for others\' wellbeing',
-        spectrum: {
-            saint: {
-                title: 'Saint',
-                description: 'Cares for all beings equally, loves enemies as friends',
-                example: 'Albert Schweitzer caring for all life equally'
-            },
-            virtue: {
-                title: 'Virtue',
-                description: 'Cares deeply for family, friends, and community',
-                example: 'Nurses caring for patients compassionately'
-            },
-            neutral: {
-                title: 'Neutral',
-                description: 'Cares for inner circle, indifferent to others',
-                example: 'Parents caring primarily for their own children'
-            },
-            vice: {
-                title: 'Vice',
-                description: 'Cares only when it serves their interests',
-                example: 'Politicians caring about constituents only during elections'
-            },
-            sin: {
-                title: 'Sin',
-                description: 'Cares only about causing maximum harm to others',
-                example: 'Serial killers caring only about victim selection'
-            }
-        }
-    },
-    'cheerful': {
-        name: 'Cheerful',
-        description: 'The disposition to be happy, optimistic, and uplifting',
-        spectrum: {
-            saint: {
-                title: 'Saint',
-                description: 'Radiates joy that lifts everyone, finds light in darkness',
-                example: 'Desmond Tutu finding joy even during apartheid'
-            },
-            virtue: {
-                title: 'Virtue',
-                description: 'Brings positive energy to situations, uplifts others',
-                example: 'Robin Williams bringing joy to others despite depression'
-            },
-            neutral: {
-                title: 'Neutral',
-                description: 'Generally pleasant, mood depends on circumstances',
-                example: 'Most people on good days'
-            },
-            vice: {
-                title: 'Vice',
-                description: 'Cheerful when getting their way, bitter when not',
-                example: 'Spoiled children happy only when indulged'
-            },
-            sin: {
-                title: 'Sin',
-                description: 'Cheerful only when others are suffering',
-                example: 'Sadistic dictators smiling at public executions'
-            }
-        }
-    },
-    'clever': {
-        name: 'Clever',
-        description: 'The ability to think quickly and solve problems creatively',
-        spectrum: {
-            saint: {
-                title: 'Saint',
-                description: 'Uses cleverness to solve problems for others selflessly',
-                example: 'Benjamin Franklin using wit to unite colonies'
-            },
-            virtue: {
-                title: 'Virtue',
-                description: 'Uses intelligence to find creative solutions that help all',
-                example: 'Engineers solving humanitarian problems'
-            },
-            neutral: {
-                title: 'Neutral',
-                description: 'Uses cleverness for personal advancement',
-                example: 'Entrepreneurs building successful businesses'
-            },
-            vice: {
-                title: 'Vice',
-                description: 'Uses cleverness to deceive and manipulate others',
-                example: 'Con artists creating elaborate schemes'
-            },
-            sin: {
-                title: 'Sin',
-                description: 'Uses cleverness to devise maximum cruelty and destruction',
-                example: 'Nazi doctors devising efficient killing methods'
-            }
-        }
-    },
-    'confident': {
-        name: 'Confident',
-        description: 'The belief in one\'s abilities and self-assurance',
-        spectrum: {
-            saint: {
-                title: 'Saint',
-                description: 'Confident in love\'s power, humble about personal role',
-                example: 'Martin Luther King Jr. confident in justice but humble'
-            },
-            virtue: {
-                title: 'Virtue',
-                description: 'Confident in abilities while remaining humble',
-                example: 'Skilled surgeons confident but respectful'
-            },
-            neutral: {
-                title: 'Neutral',
-                description: 'Confident in skills and achievements',
-                example: 'Successful professionals'
-            },
-            vice: {
-                title: 'Vice',
-                description: 'Arrogant confidence that dismisses others',
-                example: 'Donald Trump\'s dismissive arrogance'
-            },
-            sin: {
-                title: 'Sin',
-                description: 'Confident in ability to destroy and dominate',
-                example: 'Stalin\'s confidence in his ability to eliminate enemies'
-            }
-        }
+/* CSS Variables for Cosmic Theming */
+:root {
+    /* Dimensional Frequency Colors */
+    --singularity-color: #FFD700;
+    --positive-color: #00D4FF;
+    --quantum-color: #8A2BE2;
+    --negative-color: #FF8800;
+    --void-color: #FF0044;
+    
+    /* Cosmic UI Colors */
+    --cosmic-primary: #00D4FF;
+    --cosmic-secondary: #8A2BE2;
+    --cosmic-accent: #00FF88;
+    --cosmic-background: #0a0a0a;
+    --cosmic-surface: #1a1a2e;
+    --cosmic-surface-light: #16213e;
+    --cosmic-text-primary: #ffffff;
+    --cosmic-text-secondary: #b0b0b0;
+    --cosmic-border: #333366;
+    --cosmic-glow: 0 0 20px rgba(0, 212, 255, 0.3);
+    --cosmic-glow-strong: 0 0 30px rgba(0, 212, 255, 0.6);
+    
+    /* Typography */
+    --font-cosmic: 'Orbitron', monospace;
+    --font-technical: 'Rajdhani', sans-serif;
+    --font-body: 'Inter', sans-serif;
+    
+    /* Spacing */
+    --space-xs: 0.25rem;
+    --space-sm: 0.5rem;
+    --space-md: 1rem;
+    --space-lg: 1.5rem;
+    --space-xl: 2rem;
+    --space-2xl: 3rem;
+    --space-3xl: 4rem;
+    
+    /* Border Radius */
+    --radius-sm: 0.25rem;
+    --radius-md: 0.5rem;
+    --radius-lg: 0.75rem;
+    --radius-xl: 1rem;
+    --radius-cosmic: 1.5rem;
+    
+    /* Transitions */
+    --transition-fast: 0.15s ease;
+    --transition-normal: 0.3s ease;
+    --transition-slow: 0.5s ease;
+    --transition-cosmic: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--cosmic-text-primary);
+    background: var(--cosmic-background);
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* Cosmic Background System */
+.cosmic-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.starfield {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(2px 2px at 20px 30px, #eee, transparent),
+        radial-gradient(2px 2px at 40px 70px, rgba(255,255,255,0.8), transparent),
+        radial-gradient(1px 1px at 90px 40px, #fff, transparent),
+        radial-gradient(1px 1px at 130px 80px, rgba(255,255,255,0.6), transparent),
+        radial-gradient(2px 2px at 160px 30px, #ddd, transparent);
+    background-repeat: repeat;
+    background-size: 200px 100px;
+    animation: starTwinkle 20s linear infinite;
+}
+
+@keyframes starTwinkle {
+    from { transform: translateY(0); }
+    to { transform: translateY(-100px); }
+}
+
+.nebula-layer {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(ellipse at 20% 50%, rgba(138, 43, 226, 0.1) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 20%, rgba(0, 212, 255, 0.1) 0%, transparent 50%),
+        radial-gradient(ellipse at 40% 80%, rgba(255, 215, 0, 0.05) 0%, transparent 50%);
+    animation: nebulaFlow 30s ease-in-out infinite alternate;
+}
+
+@keyframes nebulaFlow {
+    0% { transform: scale(1) rotate(0deg); }
+    100% { transform: scale(1.1) rotate(2deg); }
+}
+
+.quantum-particles {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+/* Container */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--space-lg);
+}
+
+/* Quantum Header */
+.quantum-header {
+    background: linear-gradient(135deg, var(--cosmic-surface) 0%, var(--cosmic-surface-light) 100%);
+    border-bottom: 1px solid var(--cosmic-border);
+    box-shadow: var(--cosmic-glow);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    backdrop-filter: blur(10px);
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--space-lg) 0;
+    flex-wrap: wrap;
+    gap: var(--space-lg);
+}
+
+.cosmic-logo {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+}
+
+.logo-symbol {
+    font-size: 2.5rem;
+    color: var(--cosmic-primary);
+    text-shadow: var(--cosmic-glow);
+    animation: quantumPulse 2s ease-in-out infinite;
+}
+
+@keyframes quantumPulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+.logo-text h1 {
+    font-family: var(--font-cosmic);
+    font-size: 1.8rem;
+    font-weight: 700;
+    background: linear-gradient(45deg, var(--cosmic-primary), var(--cosmic-secondary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: var(--space-xs);
+}
+
+.logo-text p {
+    font-family: var(--font-technical);
+    font-size: 0.9rem;
+    color: var(--cosmic-text-secondary);
+    opacity: 0.8;
+}
+
+/* Quantum Navigation */
+.quantum-nav {
+    display: flex;
+    gap: var(--space-sm);
+    flex-wrap: wrap;
+}
+
+.nav-btn {
+    background: rgba(0, 212, 255, 0.1);
+    border: 1px solid rgba(0, 212, 255, 0.3);
+    color: var(--cosmic-text-primary);
+    padding: var(--space-sm) var(--space-lg);
+    border-radius: var(--radius-lg);
+    cursor: pointer;
+    transition: all var(--transition-cosmic);
+    font-family: var(--font-technical);
+    font-size: 0.9rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    position: relative;
+    overflow: hidden;
+}
+
+.nav-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    transition: left var(--transition-cosmic);
+}
+
+.nav-btn:hover::before {
+    left: 100%;
+}
+
+.nav-btn:hover {
+    background: rgba(0, 212, 255, 0.2);
+    border-color: var(--cosmic-primary);
+    box-shadow: var(--cosmic-glow);
+    transform: translateY(-2px);
+}
+
+.nav-btn.active {
+    background: linear-gradient(135deg, var(--cosmic-primary), var(--cosmic-secondary));
+    border-color: transparent;
+    box-shadow: var(--cosmic-glow-strong);
+}
+
+.nav-icon {
+    font-size: 1.2rem;
+}
+
+/* Main Quantum Interface */
+.quantum-main {
+    min-height: calc(100vh - 200px);
+    position: relative;
+}
+
+.section {
+    display: none;
+    padding: var(--space-3xl) 0;
+    animation: dimensionalShift var(--transition-cosmic);
+}
+
+.section.active {
+    display: block;
+}
+
+@keyframes dimensionalShift {
+    from { 
+        opacity: 0; 
+        transform: translateY(30px) scale(0.95);
     }
-};
-
-// Global state
-let currentSection = 'home';
-let workshopProgress = {
-    currentTraitIndex: 0,
-    responses: {},
-    completed: false
-};
-let filteredTraits = Object.keys(TRAITS_DATA);
-
-// Initialize the application
-document.addEventListener('DOMContentLoaded', function() {
-    initializeApp();
-});
-
-function initializeApp() {
-    // Load saved progress
-    loadProgress();
-    
-    // Set up navigation
-    setupNavigation();
-    
-    // Initialize sections
-    initializeExplorer();
-    initializeWorkshop();
-    initializeResults();
-    
-    // Show initial section
-    showSection('home');
-}
-
-// Navigation functions
-function setupNavigation() {
-    const navButtons = document.querySelectorAll('.nav-btn');
-    navButtons.forEach(btn => {
-        btn.addEventListener('click', () => {
-            const section = btn.dataset.section;
-            showSection(section);
-        });
-    });
-}
-
-function showSection(sectionName) {
-    // Hide all sections
-    document.querySelectorAll('.section').forEach(section => {
-        section.classList.remove('active');
-    });
-    
-    // Show target section
-    document.getElementById(sectionName).classList.add('active');
-    
-    // Update navigation
-    document.querySelectorAll('.nav-btn').forEach(btn => {
-        btn.classList.remove('active');
-        if (btn.dataset.section === sectionName) {
-            btn.classList.add('active');
-        }
-    });
-    
-    currentSection = sectionName;
-    
-    // Section-specific initialization
-    if (sectionName === 'results') {
-        updateResults();
+    to { 
+        opacity: 1; 
+        transform: translateY(0) scale(1);
     }
 }
 
-// Explorer functions
-function initializeExplorer() {
-    renderTraitsGrid();
-    setupSearch();
-    setupFilter();
+/* Section Headers */
+.section-header {
+    text-align: center;
+    margin-bottom: var(--space-3xl);
 }
 
-function renderTraitsGrid() {
-    const grid = document.getElementById('traits-grid');
-    grid.innerHTML = '';
-    
-    filteredTraits.forEach(traitKey => {
-        const trait = TRAITS_DATA[traitKey];
-        const card = createTraitCard(traitKey, trait);
-        grid.appendChild(card);
-    });
+.section-header h2 {
+    font-family: var(--font-cosmic);
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: var(--space-md);
+    background: linear-gradient(45deg, var(--cosmic-primary), var(--cosmic-secondary), var(--cosmic-accent));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 0 0 30px rgba(0, 212, 255, 0.3);
 }
 
-function createTraitCard(traitKey, trait) {
-    const card = document.createElement('div');
-    card.className = 'trait-card';
-    card.onclick = () => openTraitModal(traitKey);
-    
-    // Get user's assessment if available
-    const userLevel = workshopProgress.responses[traitKey] || 'neutral';
-    const levelClass = userLevel.toLowerCase();
-    
-    card.innerHTML = `
-        <div class="trait-header">
-            <h3>${trait.name}</h3>
-            <div class="trait-level ${levelClass}"></div>
-        </div>
-        <p class="trait-description">${trait.description}</p>
-        <div class="trait-preview">
-            <div class="spectrum-mini">
-                <div class="spectrum-point saint"></div>
-                <div class="spectrum-point virtue"></div>
-                <div class="spectrum-point neutral ${userLevel === 'neutral' ? 'active' : ''}"></div>
-                <div class="spectrum-point vice"></div>
-                <div class="spectrum-point sin"></div>
-            </div>
-        </div>
-    `;
-    
-    return card;
+.section-header p {
+    font-size: 1.2rem;
+    color: var(--cosmic-text-secondary);
+    max-width: 600px;
+    margin: 0 auto;
 }
 
-function setupSearch() {
-    const searchInput = document.getElementById('trait-search');
-    searchInput.addEventListener('input', (e) => {
-        const query = e.target.value.toLowerCase();
-        filteredTraits = Object.keys(TRAITS_DATA).filter(key => {
-            const trait = TRAITS_DATA[key];
-            return trait.name.toLowerCase().includes(query) ||
-                   trait.description.toLowerCase().includes(query);
-        });
-        renderTraitsGrid();
-    });
+/* Hero Quantum Field */
+.hero-field {
+    text-align: center;
+    margin-bottom: var(--space-3xl);
+    position: relative;
 }
 
-function setupFilter() {
-    const filterSelect = document.getElementById('trait-filter');
-    filterSelect.addEventListener('change', (e) => {
-        const filter = e.target.value;
-        applyFilter(filter);
-    });
+.hero-content {
+    position: relative;
+    z-index: 2;
 }
 
-function applyFilter(filter) {
-    switch(filter) {
-        case 'positive':
-            filteredTraits = Object.keys(TRAITS_DATA).filter(key => {
-                const userLevel = workshopProgress.responses[key];
-                return userLevel === 'saint' || userLevel === 'virtue';
-            });
-            break;
-        case 'negative':
-            filteredTraits = Object.keys(TRAITS_DATA).filter(key => {
-                const userLevel = workshopProgress.responses[key];
-                return userLevel === 'vice' || userLevel === 'sin';
-            });
-            break;
-        case 'balanced':
-            filteredTraits = Object.keys(TRAITS_DATA).filter(key => {
-                const userLevel = workshopProgress.responses[key];
-                return userLevel === 'neutral';
-            });
-            break;
-        default:
-            filteredTraits = Object.keys(TRAITS_DATA);
+.cosmic-title {
+    font-family: var(--font-cosmic);
+    font-size: 3rem;
+    font-weight: 900;
+    margin-bottom: var(--space-lg);
+    background: linear-gradient(45deg, var(--singularity-color), var(--positive-color), var(--quantum-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 0 0 50px rgba(255, 215, 0, 0.3);
+    animation: cosmicGlow 3s ease-in-out infinite alternate;
+}
+
+@keyframes cosmicGlow {
+    0% { filter: brightness(1); }
+    100% { filter: brightness(1.2); }
+}
+
+.hero-subtitle {
+    font-size: 1.3rem;
+    color: var(--cosmic-text-secondary);
+    margin-bottom: var(--space-2xl);
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.8;
+}
+
+/* Dimensional Frequency Preview */
+.frequency-preview {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-lg);
+    flex-wrap: wrap;
+    margin-top: var(--space-2xl);
+}
+
+.frequency-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-sm);
+    padding: var(--space-md);
+    border-radius: var(--radius-lg);
+    transition: all var(--transition-cosmic);
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.frequency-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: var(--radius-lg);
+    padding: 1px;
+    background: linear-gradient(45deg, transparent, currentColor, transparent);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity var(--transition-cosmic);
+}
+
+.frequency-item:hover::before {
+    opacity: 1;
+}
+
+.frequency-item.singularity { color: var(--singularity-color); }
+.frequency-item.positive { color: var(--positive-color); }
+.frequency-item.quantum { color: var(--quantum-color); }
+.frequency-item.negative { color: var(--negative-color); }
+.frequency-item.void { color: var(--void-color); }
+
+.freq-symbol {
+    font-size: 2rem;
+    filter: drop-shadow(0 0 10px currentColor);
+}
+
+.frequency-item span {
+    font-family: var(--font-technical);
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-align: center;
+    color: var(--cosmic-text-primary);
+}
+
+/* Quantum Interface Grid */
+.quantum-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: var(--space-xl);
+    margin-bottom: var(--space-3xl);
+}
+
+.quantum-card {
+    background: var(--cosmic-surface);
+    border: 1px solid var(--cosmic-border);
+    border-radius: var(--radius-cosmic);
+    padding: var(--space-xl);
+    text-align: center;
+    transition: all var(--transition-cosmic);
+    position: relative;
+    overflow: hidden;
+}
+
+.quantum-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, var(--cosmic-primary), var(--cosmic-secondary));
+    opacity: 0;
+    transition: opacity var(--transition-cosmic);
+    border-radius: var(--radius-cosmic);
+}
+
+.quantum-card:hover::before {
+    opacity: 0.1;
+}
+
+.quantum-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--cosmic-glow-strong);
+    border-color: var(--cosmic-primary);
+}
+
+.card-energy-field {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, var(--cosmic-primary), var(--cosmic-secondary));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto var(--space-lg);
+    position: relative;
+    z-index: 2;
+}
+
+.energy-icon {
+    font-size: 2rem;
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.5));
+}
+
+.quantum-card h3 {
+    font-family: var(--font-cosmic);
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin-bottom: var(--space-md);
+    color: var(--cosmic-text-primary);
+    position: relative;
+    z-index: 2;
+}
+
+.quantum-card p {
+    color: var(--cosmic-text-secondary);
+    margin-bottom: var(--space-xl);
+    line-height: 1.7;
+    position: relative;
+    z-index: 2;
+}
+
+/* Quantum Buttons */
+.quantum-btn {
+    display: inline-block;
+    padding: var(--space-md) var(--space-xl);
+    border: none;
+    border-radius: var(--radius-lg);
+    cursor: pointer;
+    font-family: var(--font-technical);
+    font-size: 1rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all var(--transition-cosmic);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    z-index: 2;
+}
+
+.quantum-btn span {
+    position: relative;
+    z-index: 2;
+}
+
+.btn-energy {
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left var(--transition-cosmic);
+}
+
+.quantum-btn:hover .btn-energy {
+    left: 100%;
+}
+
+.quantum-btn.primary {
+    background: linear-gradient(135deg, var(--cosmic-primary), var(--cosmic-secondary));
+    color: white;
+    box-shadow: 0 4px 15px rgba(0, 212, 255, 0.3);
+}
+
+.quantum-btn.primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0, 212, 255, 0.5);
+}
+
+.quantum-btn.secondary {
+    background: var(--cosmic-surface);
+    color: var(--cosmic-text-primary);
+    border: 1px solid var(--cosmic-border);
+}
+
+.quantum-btn.secondary:hover {
+    background: var(--cosmic-surface-light);
+    border-color: var(--cosmic-primary);
+    transform: translateY(-2px);
+    box-shadow: var(--cosmic-glow);
+}
+
+.quantum-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none !important;
+}
+
+/* Cosmic Framework */
+.cosmic-framework {
+    background: var(--cosmic-surface);
+    padding: var(--space-2xl);
+    border-radius: var(--radius-cosmic);
+    border: 1px solid var(--cosmic-border);
+    text-align: center;
+    position: relative;
+}
+
+.cosmic-framework::before {
+    content: '';
+    position: absolute;
+    top: -1px;
+    left: -1px;
+    right: -1px;
+    bottom: -1px;
+    background: linear-gradient(45deg, var(--cosmic-primary), var(--cosmic-secondary), var(--cosmic-accent));
+    border-radius: var(--radius-cosmic);
+    z-index: -1;
+    opacity: 0.3;
+}
+
+.cosmic-framework h3 {
+    font-family: var(--font-cosmic);
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: var(--space-lg);
+    color: var(--cosmic-text-primary);
+}
+
+.cosmic-framework p {
+    font-size: 1.1rem;
+    color: var(--cosmic-text-secondary);
+    margin-bottom: var(--space-lg);
+    line-height: 1.8;
+}
+
+/* Quantum Scanner */
+.quantum-scanner {
+    margin-bottom: var(--space-2xl);
+}
+
+.scanner-interface {
+    display: flex;
+    gap: var(--space-md);
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.quantum-input, .quantum-select {
+    padding: var(--space-md);
+    border: 1px solid var(--cosmic-border);
+    border-radius: var(--radius-lg);
+    font-size: 1rem;
+    background: var(--cosmic-surface);
+    color: var(--cosmic-text-primary);
+    transition: all var(--transition-cosmic);
+    font-family: var(--font-technical);
+}
+
+.quantum-input:focus, .quantum-select:focus {
+    outline: none;
+    border-color: var(--cosmic-primary);
+    box-shadow: var(--cosmic-glow);
+}
+
+.quantum-input {
+    width: 300px;
+    max-width: 100%;
+}
+
+.quantum-input::placeholder {
+    color: var(--cosmic-text-secondary);
+}
+
+/* Fields Grid */
+.fields-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: var(--space-xl);
+}
+
+.field-card {
+    background: var(--cosmic-surface);
+    padding: var(--space-lg);
+    border-radius: var(--radius-cosmic);
+    border: 1px solid var(--cosmic-border);
+    cursor: pointer;
+    transition: all var(--transition-cosmic);
+    position: relative;
+    overflow: hidden;
+}
+
+.field-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, var(--cosmic-primary), var(--cosmic-secondary));
+    opacity: 0;
+    transition: opacity var(--transition-cosmic);
+    border-radius: var(--radius-cosmic);
+}
+
+.field-card:hover::before {
+    opacity: 0.1;
+}
+
+.field-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--cosmic-glow);
+    border-color: var(--cosmic-primary);
+}
+
+.field-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--space-md);
+    position: relative;
+    z-index: 2;
+}
+
+.field-header h3 {
+    font-family: var(--font-cosmic);
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--cosmic-text-primary);
+}
+
+.frequency-indicator {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    box-shadow: 0 0 10px currentColor;
+}
+
+.frequency-indicator.singularity { background: var(--singularity-color); }
+.frequency-indicator.positive { background: var(--positive-color); }
+.frequency-indicator.quantum { background: var(--quantum-color); }
+.frequency-indicator.negative { background: var(--negative-color); }
+.frequency-indicator.void { background: var(--void-color); }
+
+.field-description {
+    color: var(--cosmic-text-secondary);
+    margin-bottom: var(--space-lg);
+    line-height: 1.6;
+    position: relative;
+    z-index: 2;
+}
+
+.spectrum-mini {
+    display: flex;
+    gap: var(--space-xs);
+    justify-content: center;
+    position: relative;
+    z-index: 2;
+}
+
+.spectrum-point {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    opacity: 0.3;
+    transition: all var(--transition-cosmic);
+}
+
+.spectrum-point.singularity { background: var(--singularity-color); }
+.spectrum-point.positive { background: var(--positive-color); }
+.spectrum-point.quantum { background: var(--quantum-color); }
+.spectrum-point.negative { background: var(--negative-color); }
+.spectrum-point.void { background: var(--void-color); }
+
+.spectrum-point.active {
+    opacity: 1;
+    transform: scale(1.5);
+    box-shadow: 0 0 10px currentColor;
+}
+
+/* Calibration Interface */
+.calibration-header {
+    text-align: center;
+    margin-bottom: var(--space-3xl);
+}
+
+.calibration-header h2 {
+    font-family: var(--font-cosmic);
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: var(--space-lg);
+    background: linear-gradient(45deg, var(--cosmic-primary), var(--cosmic-secondary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.energy-alignment-progress {
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.progress-container {
+    background: var(--cosmic-surface);
+    height: 12px;
+    border-radius: var(--radius-lg);
+    margin-bottom: var(--space-md);
+    position: relative;
+    overflow: hidden;
+    border: 1px solid var(--cosmic-border);
+}
+
+.alignment-beam {
+    background: linear-gradient(90deg, var(--cosmic-primary), var(--cosmic-secondary), var(--cosmic-accent));
+    height: 100%;
+    border-radius: var(--radius-lg);
+    transition: width var(--transition-cosmic);
+    width: 0%;
+    position: relative;
+    box-shadow: 0 0 20px rgba(0, 212, 255, 0.5);
+}
+
+.alignment-beam::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    animation: energyFlow 2s linear infinite;
+}
+
+@keyframes energyFlow {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+.calibration-status {
+    display: block;
+    font-family: var(--font-technical);
+    font-size: 0.9rem;
+    color: var(--cosmic-text-secondary);
+    text-align: center;
+}
+
+/* Assessment Matrix */
+.assessment-matrix {
+    background: var(--cosmic-surface);
+    padding: var(--space-2xl);
+    border-radius: var(--radius-cosmic);
+    border: 1px solid var(--cosmic-border);
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.assessment-matrix::before {
+    content: '';
+    position: absolute;
+    top: -1px;
+    left: -1px;
+    right: -1px;
+    bottom: -1px;
+    background: linear-gradient(45deg, var(--cosmic-primary), var(--cosmic-secondary));
+    border-radius: var(--radius-cosmic);
+    z-index: -1;
+    opacity: 0.2;
+}
+
+.assessment-matrix h3 {
+    font-family: var(--font-cosmic);
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: var(--space-md);
+    text-align: center;
+    color: var(--cosmic-text-primary);
+}
+
+.assessment-matrix p {
+    color: var(--cosmic-text-secondary);
+    text-align: center;
+    margin-bottom: var(--space-2xl);
+    font-size: 1.1rem;
+    line-height: 1.7;
+}
+
+/* Frequency Selector */
+.frequency-selector h4 {
+    font-family: var(--font-technical);
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: var(--space-lg);
+    text-align: center;
+    color: var(--cosmic-text-primary);
+}
+
+.frequency-options {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+    margin-bottom: var(--space-2xl);
+}
+
+.frequency-option {
+    padding: var(--space-lg);
+    border: 2px solid var(--cosmic-border);
+    border-radius: var(--radius-lg);
+    cursor: pointer;
+    transition: all var(--transition-cosmic);
+    background: var(--cosmic-surface);
+    position: relative;
+    overflow: hidden;
+}
+
+.frequency-option::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    transition: left var(--transition-cosmic);
+}
+
+.frequency-option:hover::before {
+    left: 100%;
+}
+
+.frequency-option:hover {
+    border-color: var(--cosmic-primary);
+    transform: translateX(8px);
+    box-shadow: var(--cosmic-glow);
+}
+
+.frequency-option.selected {
+    border-color: var(--cosmic-primary);
+    box-shadow: var(--cosmic-glow-strong);
+}
+
+.frequency-option.singularity.selected {
+    border-color: var(--singularity-color);
+    background: rgba(255, 215, 0, 0.1);
+}
+
+.frequency-option.positive.selected {
+    border-color: var(--positive-color);
+    background: rgba(0, 212, 255, 0.1);
+}
+
+.frequency-option.quantum.selected {
+    border-color: var(--quantum-color);
+    background: rgba(138, 43, 226, 0.1);
+}
+
+.frequency-option.negative.selected {
+    border-color: var(--negative-color);
+    background: rgba(255, 136, 0, 0.1);
+}
+
+.frequency-option.void.selected {
+    border-color: var(--void-color);
+    background: rgba(255, 0, 68, 0.1);
+}
+
+.option-header h5 {
+    font-family: var(--font-cosmic);
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: var(--space-sm);
+    color: var(--cosmic-text-primary);
+}
+
+.frequency-option p {
+    color: var(--cosmic-text-primary);
+    margin-bottom: var(--space-sm);
+    text-align: left;
+    line-height: 1.6;
+}
+
+.frequency-option small {
+    color: var(--cosmic-text-secondary);
+    font-style: italic;
+    display: block;
+    text-align: left;
+    font-size: 0.9rem;
+}
+
+/* Calibration Controls */
+.calibration-controls {
+    display: flex;
+    justify-content: space-between;
+    gap: var(--space-md);
+}
+
+/* Completion Matrix */
+.completion-matrix {
+    background: var(--cosmic-surface);
+    padding: var(--space-2xl);
+    border-radius: var(--radius-cosmic);
+    border: 1px solid var(--cosmic-border);
+    text-align: center;
+    max-width: 500px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.completion-matrix::before {
+    content: '';
+    position: absolute;
+    top: -1px;
+    left: -1px;
+    right: -1px;
+    bottom: -1px;
+    background: linear-gradient(45deg, var(--singularity-color), var(--positive-color), var(--cosmic-accent));
+    border-radius: var(--radius-cosmic);
+    z-index: -1;
+    opacity: 0.3;
+}
+
+.cosmic-achievement {
+    font-size: 4rem;
+    margin-bottom: var(--space-lg);
+    filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.5));
+    animation: achievementGlow 2s ease-in-out infinite alternate;
+}
+
+@keyframes achievementGlow {
+    0% { transform: scale(1); }
+    100% { transform: scale(1.1); }
+}
+
+.completion-matrix h3 {
+    font-family: var(--font-cosmic);
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: var(--space-md);
+    color: var(--cosmic-text-primary);
+}
+
+.completion-matrix p {
+    color: var(--cosmic-text-secondary);
+    margin-bottom: var(--space-xl);
+    line-height: 1.7;
+}
+
+/* Signature Analysis */
+.signature-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--space-2xl);
+    flex-wrap: wrap;
+    gap: var(--space-md);
+}
+
+.signature-header h2 {
+    font-family: var(--font-cosmic);
+    font-size: 2.5rem;
+    font-weight: 700;
+    background: linear-gradient(45deg, var(--cosmic-primary), var(--cosmic-secondary), var(--cosmic-accent));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.signature-actions {
+    display: flex;
+    gap: var(--space-md);
+    flex-wrap: wrap;
+}
+
+.signature-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-2xl);
+    margin-bottom: var(--space-2xl);
+}
+
+.signature-panel {
+    background: var(--cosmic-surface);
+    padding: var(--space-xl);
+    border-radius: var(--radius-cosmic);
+    border: 1px solid var(--cosmic-border);
+    position: relative;
+}
+
+.signature-panel::before {
+    content: '';
+    position: absolute;
+    top: -1px;
+    left: -1px;
+    right: -1px;
+    bottom: -1px;
+    background: linear-gradient(45deg, var(--cosmic-primary), var(--cosmic-secondary));
+    border-radius: var(--radius-cosmic);
+    z-index: -1;
+    opacity: 0.1;
+}
+
+.signature-panel.full-width {
+    grid-column: 1 / -1;
+}
+
+.signature-panel h3 {
+    font-family: var(--font-cosmic);
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin-bottom: var(--space-lg);
+    color: var(--cosmic-text-primary);
+}
+
+/* Frequency Distribution */
+.distribution-stats {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: var(--space-md);
+}
+
+.stat {
+    text-align: center;
+    padding: var(--space-md);
+    border-radius: var(--radius-lg);
+    min-width: 80px;
+    flex: 1;
+    border: 1px solid currentColor;
+    position: relative;
+    overflow: hidden;
+}
+
+.stat::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: currentColor;
+    opacity: 0.1;
+    border-radius: var(--radius-lg);
+}
+
+.stat.singularity { color: var(--singularity-color); }
+.stat.positive { color: var(--positive-color); }
+.stat.quantum { color: var(--quantum-color); }
+.stat.negative { color: var(--negative-color); }
+.stat.void { color: var(--void-color); }
+
+.stat h4 {
+    font-family: var(--font-technical);
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin-bottom: var(--space-xs);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    position: relative;
+    z-index: 2;
+}
+
+.stat span {
+    display: block;
+    font-family: var(--font-cosmic);
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: var(--space-xs);
+    position: relative;
+    z-index: 2;
+}
+
+.stat small {
+    font-size: 0.7rem;
+    color: var(--cosmic-text-secondary);
+    position: relative;
+    z-index: 2;
+}
+
+/* Chart Container */
+.chart-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 300px;
+}
+
+#resonance-chart {
+    border-radius: var(--radius-lg);
+    background: rgba(0, 0, 0, 0.3);
+}
+
+/* Alignment Insights */
+.alignment-insights {
+    position: relative;
+}
+
+.insights-content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+}
+
+.insight-section h4 {
+    font-family: var(--font-cosmic);
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: var(--space-md);
+    color: var(--cosmic-text-primary);
+}
+
+.insight-section p {
+    color: var(--cosmic-text-secondary);
+    line-height: 1.7;
+    margin-bottom: var(--space-md);
+}
+
+.insight-section ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.insight-section li {
+    color: var(--cosmic-text-secondary);
+    padding: var(--space-sm) 0;
+    padding-left: var(--space-lg);
+    position: relative;
+    line-height: 1.6;
+}
+
+.insight-section li::before {
+    content: '⚛';
+    color: var(--cosmic-primary);
+    font-weight: bold;
+    position: absolute;
+    left: 0;
+    filter: drop-shadow(0 0 5px currentColor);
+}
+
+/* Holographic Modal */
+.holographic-modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(10px);
+}
+
+.modal-projection {
+    background: var(--cosmic-surface);
+    margin: 5% auto;
+    padding: 0;
+    border-radius: var(--radius-cosmic);
+    width: 90%;
+    max-width: 800px;
+    max-height: 80vh;
+    overflow-y: auto;
+    box-shadow: 0 20px 60px rgba(0, 212, 255, 0.3);
+    border: 1px solid var(--cosmic-border);
+    animation: holographicAppear var(--transition-cosmic);
+    position: relative;
+}
+
+.modal-projection::before {
+    content: '';
+    position: absolute;
+    top: -1px;
+    left: -1px;
+    right: -1px;
+    bottom: -1px;
+    background: linear-gradient(45deg, var(--cosmic-primary), var(--cosmic-secondary), var(--cosmic-accent));
+    border-radius: var(--radius-cosmic);
+    z-index: -1;
+    opacity: 0.3;
+}
+
+@keyframes holographicAppear {
+    from { 
+        opacity: 0; 
+        transform: translateY(-50px) scale(0.9) rotateX(10deg);
     }
-    renderTraitsGrid();
-}
-
-// Modal functions
-function openTraitModal(traitKey) {
-    const trait = TRAITS_DATA[traitKey];
-    const modal = document.getElementById('trait-modal');
-    const modalName = document.getElementById('modal-trait-name');
-    const spectrumDetail = document.getElementById('spectrum-detail');
-    
-    modalName.textContent = trait.name;
-    
-    spectrumDetail.innerHTML = '';
-    Object.entries(trait.spectrum).forEach(([level, data]) => {
-        const levelDiv = document.createElement('div');
-        levelDiv.className = `spectrum-level ${level}`;
-        levelDiv.innerHTML = `
-            <div class="level-header">
-                <h4>${data.title}</h4>
-            </div>
-            <p class="level-description">${data.description}</p>
-            <p class="level-example"><em>Example: ${data.example}</em></p>
-        `;
-        spectrumDetail.appendChild(levelDiv);
-    });
-    
-    modal.style.display = 'block';
-}
-
-function closeModal() {
-    document.getElementById('trait-modal').style.display = 'none';
-}
-
-// Workshop functions
-function initializeWorkshop() {
-    if (workshopProgress.completed) {
-        showWorkshopComplete();
-    } else {
-        showCurrentTrait();
+    to { 
+        opacity: 1; 
+        transform: translateY(0) scale(1) rotateX(0deg);
     }
 }
 
-function showCurrentTrait() {
-    const traitKeys = Object.keys(TRAITS_DATA);
-    const currentKey = traitKeys[workshopProgress.currentTraitIndex];
-    
-    if (!currentKey) {
-        completeWorkshop();
-        return;
+.projection-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--space-xl);
+    border-bottom: 1px solid var(--cosmic-border);
+}
+
+.projection-header h3 {
+    font-family: var(--font-cosmic);
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: var(--cosmic-text-primary);
+}
+
+.close-projection {
+    background: none;
+    border: none;
+    font-size: 2rem;
+    cursor: pointer;
+    color: var(--cosmic-text-secondary);
+    padding: var(--space-sm);
+    border-radius: var(--radius-sm);
+    transition: all var(--transition-cosmic);
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.close-projection:hover {
+    background: var(--cosmic-surface-light);
+    color: var(--cosmic-text-primary);
+    transform: scale(1.1);
+}
+
+.projection-content {
+    padding: var(--space-xl);
+}
+
+/* Frequency Spectrum */
+.frequency-spectrum {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+}
+
+.frequency-level {
+    padding: var(--space-lg);
+    border-radius: var(--radius-lg);
+    border-left: 4px solid;
+    position: relative;
+    overflow: hidden;
+}
+
+.frequency-level::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: currentColor;
+    opacity: 0.05;
+    border-radius: var(--radius-lg);
+}
+
+.frequency-level.singularity { border-left-color: var(--singularity-color); }
+.frequency-level.positive { border-left-color: var(--positive-color); }
+.frequency-level.quantum { border-left-color: var(--quantum-color); }
+.frequency-level.negative { border-left-color: var(--negative-color); }
+.frequency-level.void { border-left-color: var(--void-color); }
+
+.frequency-header h4 {
+    font-family: var(--font-cosmic);
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: var(--space-sm);
+    color: var(--cosmic-text-primary);
+    position: relative;
+    z-index: 2;
+}
+
+.frequency-description {
+    color: var(--cosmic-text-primary);
+    margin-bottom: var(--space-sm);
+    line-height: 1.7;
+    position: relative;
+    z-index: 2;
+}
+
+.frequency-example {
+    color: var(--cosmic-text-secondary);
+    font-style: italic;
+    font-size: 0.9rem;
+    position: relative;
+    z-index: 2;
+}
+
+/* Quantum Footer */
+.quantum-footer {
+    background: var(--cosmic-surface);
+    border-top: 1px solid var(--cosmic-border);
+    padding: var(--space-2xl) 0 var(--space-lg);
+    margin-top: var(--space-3xl);
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--space-xl);
+    margin-bottom: var(--space-xl);
+}
+
+.footer-section h4 {
+    font-family: var(--font-cosmic);
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: var(--space-md);
+    color: var(--cosmic-text-primary);
+}
+
+.footer-section p {
+    color: var(--cosmic-text-secondary);
+    line-height: 1.7;
+}
+
+.footer-section ul {
+    list-style: none;
+}
+
+.footer-section li {
+    color: var(--cosmic-text-secondary);
+    padding: var(--space-xs) 0;
+    line-height: 1.6;
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: var(--space-lg);
+    border-top: 1px solid var(--cosmic-border);
+    color: var(--cosmic-text-secondary);
+    font-size: 0.9rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        padding: 0 var(--space-md);
     }
     
-    const trait = TRAITS_DATA[currentKey];
-    
-    // Update progress bar
-    updateProgressBar();
-    
-    // Update trait display
-    document.getElementById('current-trait-name').textContent = trait.name;
-    document.getElementById('current-trait-description').textContent = trait.description;
-    
-    // Create spectrum options
-    const optionsContainer = document.getElementById('spectrum-options');
-    optionsContainer.innerHTML = '';
-    
-    Object.entries(trait.spectrum).forEach(([level, data]) => {
-        const option = document.createElement('div');
-        option.className = `spectrum-option ${level}`;
-        if (workshopProgress.responses[currentKey] === level) {
-            option.classList.add('selected');
-        }
-        
-        option.onclick = () => selectSpectrumLevel(currentKey, level);
-        
-        option.innerHTML = `
-            <div class="option-header">
-                <h5>${data.title}</h5>
-            </div>
-            <p>${data.description}</p>
-            <small>${data.example}</small>
-        `;
-        
-        optionsContainer.appendChild(option);
-    });
-    
-    // Update navigation buttons
-    updateWorkshopNavigation();
-}
-
-function selectSpectrumLevel(traitKey, level) {
-    workshopProgress.responses[traitKey] = level;
-    saveProgress();
-    
-    // Update visual selection
-    document.querySelectorAll('.spectrum-option').forEach(opt => {
-        opt.classList.remove('selected');
-    });
-    event.target.closest('.spectrum-option').classList.add('selected');
-    
-    // Enable next button
-    document.getElementById('next-trait').disabled = false;
-}
-
-function updateProgressBar() {
-    const totalTraits = Object.keys(TRAITS_DATA).length;
-    const progress = (workshopProgress.currentTraitIndex / totalTraits) * 100;
-    
-    document.getElementById('workshop-progress').style.width = progress + '%';
-    document.getElementById('progress-text').textContent = 
-        `${workshopProgress.currentTraitIndex} / ${totalTraits}`;
-}
-
-function updateWorkshopNavigation() {
-    const prevBtn = document.getElementById('prev-trait');
-    const nextBtn = document.getElementById('next-trait');
-    
-    prevBtn.disabled = workshopProgress.currentTraitIndex === 0;
-    
-    const currentKey = Object.keys(TRAITS_DATA)[workshopProgress.currentTraitIndex];
-    nextBtn.disabled = !workshopProgress.responses[currentKey];
-    
-    if (workshopProgress.currentTraitIndex === Object.keys(TRAITS_DATA).length - 1) {
-        nextBtn.textContent = 'Complete';
-    } else {
-        nextBtn.textContent = 'Next';
-    }
-}
-
-function previousTrait() {
-    if (workshopProgress.currentTraitIndex > 0) {
-        workshopProgress.currentTraitIndex--;
-        showCurrentTrait();
-        saveProgress();
-    }
-}
-
-function nextTrait() {
-    const totalTraits = Object.keys(TRAITS_DATA).length;
-    
-    if (workshopProgress.currentTraitIndex < totalTraits - 1) {
-        workshopProgress.currentTraitIndex++;
-        showCurrentTrait();
-    } else {
-        completeWorkshop();
+    .header-content {
+        flex-direction: column;
+        text-align: center;
     }
     
-    saveProgress();
-}
-
-function completeWorkshop() {
-    workshopProgress.completed = true;
-    saveProgress();
-    showWorkshopComplete();
-}
-
-function showWorkshopComplete() {
-    document.getElementById('trait-assessment').style.display = 'none';
-    document.getElementById('workshop-complete').style.display = 'block';
-    updateProgressBar();
-}
-
-// Results functions
-function initializeResults() {
-    if (Object.keys(workshopProgress.responses).length > 0) {
-        updateResults();
-    }
-}
-
-function updateResults() {
-    const responses = workshopProgress.responses;
-    
-    if (Object.keys(responses).length === 0) {
-        document.getElementById('results-summary').innerHTML = 
-            '<p>Complete the workshop to see your results.</p>';
-        return;
+    .quantum-nav {
+        justify-content: center;
     }
     
-    // Generate summary
-    generateResultsSummary(responses);
+    .cosmic-title {
+        font-size: 2.2rem;
+    }
     
-    // Generate insights
-    generateInsights(responses);
+    .quantum-grid {
+        grid-template-columns: 1fr;
+    }
     
-    // Update visualization
-    updatePersonalityChart(responses);
-}
-
-function generateResultsSummary(responses) {
-    const summary = document.getElementById('results-summary');
-    const levels = { saint: 0, virtue: 0, neutral: 0, vice: 0, sin: 0 };
+    .frequency-preview {
+        flex-direction: column;
+        align-items: center;
+    }
     
-    Object.values(responses).forEach(level => {
-        levels[level]++;
-    });
+    .scanner-interface {
+        flex-direction: column;
+        align-items: center;
+    }
     
-    const total = Object.keys(responses).length;
+    .quantum-input {
+        width: 100%;
+        max-width: 300px;
+    }
     
-    summary.innerHTML = `
-        <div class="summary-stats">
-            <div class="stat saint">
-                <h4>Saint</h4>
-                <span>${levels.saint}</span>
-                <small>${Math.round((levels.saint/total)*100)}%</small>
-            </div>
-            <div class="stat virtue">
-                <h4>Virtue</h4>
-                <span>${levels.virtue}</span>
-                <small>${Math.round((levels.virtue/total)*100)}%</small>
-            </div>
-            <div class="stat neutral">
-                <h4>Neutral</h4>
-                <span>${levels.neutral}</span>
-                <small>${Math.round((levels.neutral/total)*100)}%</small>
-            </div>
-            <div class="stat vice">
-                <h4>Vice</h4>
-                <span>${levels.vice}</span>
-                <small>${Math.round((levels.vice/total)*100)}%</small>
-            </div>
-            <div class="stat sin">
-                <h4>Sin</h4>
-                <span>${levels.sin}</span>
-                <small>${Math.round((levels.sin/total)*100)}%</small>
-            </div>
-        </div>
-    `;
-}
-
-function generateInsights(responses) {
-    const insights = document.getElementById('results-insights');
-    const levels = { saint: 0, virtue: 0, neutral: 0, vice: 0, sin: 0 };
+    .fields-grid {
+        grid-template-columns: 1fr;
+    }
     
-    Object.values(responses).forEach(level => {
-        levels[level]++;
-    });
+    .modal-projection {
+        width: 95%;
+        margin: 10% auto;
+    }
     
-    let primaryTendency = 'neutral';
-    let maxCount = levels.neutral;
+    .calibration-controls {
+        flex-direction: column;
+    }
     
-    Object.entries(levels).forEach(([level, count]) => {
-        if (count > maxCount) {
-            maxCount = count;
-            primaryTendency = level;
-        }
-    });
+    .signature-header {
+        flex-direction: column;
+        text-align: center;
+    }
     
-    const strengthTraits = [];
-    const growthTraits = [];
+    .signature-grid {
+        grid-template-columns: 1fr;
+        gap: var(--space-lg);
+    }
     
-    Object.entries(responses).forEach(([trait, level]) => {
-        if (level === 'saint' || level === 'virtue') {
-            strengthTraits.push(TRAITS_DATA[trait].name);
-        } else if (level === 'vice' || level === 'sin') {
-            growthTraits.push(TRAITS_DATA[trait].name);
-        }
-    });
+    .distribution-stats {
+        justify-content: center;
+    }
     
-    insights.innerHTML = `
-        <div class="insights-content">
-            <div class="insight-section">
-                <h4>Your Primary Tendency: ${primaryTendency.charAt(0).toUpperCase() + primaryTendency.slice(1)}</h4>
-                <p>Most of your traits fall into the ${primaryTendency} category, indicating ${getTendencyDescription(primaryTendency)}.</p>
-            </div>
-            
-            ${strengthTraits.length > 0 ? `
-            <div class="insight-section">
-                <h4>Your Strengths</h4>
-                <p>You show virtue or saintly qualities in: ${strengthTraits.join(', ')}</p>
-            </div>
-            ` : ''}
-            
-            ${growthTraits.length > 0 ? `
-            <div class="insight-section">
-                <h4>Growth Areas</h4>
-                <p>Consider developing these traits: ${growthTraits.join(', ')}</p>
-            </div>
-            ` : ''}
-            
-            <div class="insight-section">
-                <h4>Recommendations</h4>
-                <ul>
-                    <li>Focus on your strength traits to become a positive influence</li>
-                    <li>Work on balancing extreme tendencies toward the center</li>
-                    <li>Use your self-awareness for continuous growth</li>
-                    <li>Consider how your traits affect your relationships</li>
-                </ul>
-            </div>
-        </div>
-    `;
-}
-
-function getTendencyDescription(tendency) {
-    const descriptions = {
-        saint: 'an exceptionally altruistic and selfless approach to life',
-        virtue: 'a generally positive and ethical approach to most situations',
-        neutral: 'a balanced approach that adapts to circumstances',
-        vice: 'a tendency toward self-interest that may sometimes harm others',
-        sin: 'patterns that may be destructive to yourself and others'
-    };
-    return descriptions[tendency] || 'a unique personality profile';
-}
-
-function updatePersonalityChart(responses) {
-    const canvas = document.getElementById('personality-chart');
-    const ctx = canvas.getContext('2d');
-    
-    // Clear canvas
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    
-    // Simple bar chart representation
-    const levels = { saint: 0, virtue: 0, neutral: 0, vice: 0, sin: 0 };
-    Object.values(responses).forEach(level => {
-        levels[level]++;
-    });
-    
-    const colors = {
-        saint: '#4CAF50',
-        virtue: '#8BC34A',
-        neutral: '#FFC107',
-        vice: '#FF9800',
-        sin: '#F44336'
-    };
-    
-    const barWidth = 60;
-    const barSpacing = 20;
-    const maxHeight = 300;
-    const maxValue = Math.max(...Object.values(levels));
-    
-    let x = 40;
-    Object.entries(levels).forEach(([level, count]) => {
-        const height = (count / maxValue) * maxHeight;
-        const y = canvas.height - height - 40;
-        
-        // Draw bar
-        ctx.fillStyle = colors[level];
-        ctx.fillRect(x, y, barWidth, height);
-        
-        // Draw label
-        ctx.fillStyle = '#333';
-        ctx.font = '12px Inter';
-        ctx.textAlign = 'center';
-        ctx.fillText(level.charAt(0).toUpperCase() + level.slice(1), x + barWidth/2, canvas.height - 20);
-        
-        // Draw value
-        ctx.fillText(count.toString(), x + barWidth/2, y - 10);
-        
-        x += barWidth + barSpacing;
-    });
-}
-
-// Utility functions
-function resetWorkshop() {
-    workshopProgress = {
-        currentTraitIndex: 0,
-        responses: {},
-        completed: false
-    };
-    saveProgress();
-    
-    document.getElementById('trait-assessment').style.display = 'block';
-    document.getElementById('workshop-complete').style.display = 'none';
-    
-    showCurrentTrait();
-    renderTraitsGrid();
-}
-
-function exportResults() {
-    const results = {
-        timestamp: new Date().toISOString(),
-        responses: workshopProgress.responses,
-        summary: generateExportSummary()
-    };
-    
-    const dataStr = JSON.stringify(results, null, 2);
-    const dataBlob = new Blob([dataStr], {type: 'application/json'});
-    
-    const link = document.createElement('a');
-    link.href = URL.createObjectURL(dataBlob);
-    link.download = 'johari-nohari-results.json';
-    link.click();
-}
-
-function generateExportSummary() {
-    const responses = workshopProgress.responses;
-    const levels = { saint: 0, virtue: 0, neutral: 0, vice: 0, sin: 0 };
-    
-    Object.values(responses).forEach(level => {
-        levels[level]++;
-    });
-    
-    return {
-        totalTraits: Object.keys(responses).length,
-        distribution: levels,
-        completedAt: new Date().toISOString()
-    };
-}
-
-function saveProgress() {
-    localStorage.setItem('johari-workshop-progress', JSON.stringify(workshopProgress));
-}
-
-function loadProgress() {
-    const saved = localStorage.getItem('johari-workshop-progress');
-    if (saved) {
-        workshopProgress = JSON.parse(saved);
+    .footer-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
     }
 }
 
-// Event listeners for modal
-window.onclick = function(event) {
-    const modal = document.getElementById('trait-modal');
-    if (event.target === modal) {
-        closeModal();
+@media (max-width: 480px) {
+    .section {
+        padding: var(--space-xl) 0;
+    }
+    
+    .quantum-card, .assessment-matrix, .completion-matrix {
+        padding: var(--space-lg);
+    }
+    
+    .modal-projection {
+        margin: 5% auto;
+        height: 90vh;
+    }
+    
+    .frequency-option {
+        padding: var(--space-md);
+    }
+    
+    .distribution-stats {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .stat {
+        width: 100%;
+        max-width: 200px;
+    }
+    
+    .cosmic-title {
+        font-size: 1.8rem;
+    }
+    
+    .logo-text h1 {
+        font-size: 1.4rem;
     }
 }
+
+/* Accessibility Improvements */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* Focus Styles for Keyboard Navigation */
+button:focus,
+input:focus,
+select:focus,
+.field-card:focus,
+.frequency-option:focus {
+    outline: 2px solid var(--cosmic-primary);
+    outline-offset: 2px;
+}
+
+/* High Contrast Mode Support */
+@media (prefers-contrast: high) {
+    :root {
+        --cosmic-glow: 0 2px 8px rgba(0, 212, 255, 0.8);
+        --cosmic-border: #4466aa;
+    }
+}
+
