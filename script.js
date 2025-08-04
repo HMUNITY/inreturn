@@ -1,57 +1,87 @@
-const colors = {
-    1: 'red', 2: 'orange', 3: 'yellow', 4: 'green', 5: 'blue',
-    6: 'violet', 7: 'violet', 8: 'violet', 9: 'violet' // 4 violet regions
-};
+const colors = ['red', 'orange', 'yellow', 'green', 'blue', 'violet', 'pink'];
+const wordTypes = ['Adjective', 'Noun', 'Verb'];
 
-function createTable(tableId, regionNumber) {
-    const tbody = document.getElementById(tableId);
-    const isViolet = colors[regionNumber] === 'violet';
-    
-    for (let row = 1; row <= 21; row++) {
-        const tr = document.createElement('tr');
-        
-        // Row header
-        const th = document.createElement('th');
-        th.textContent = row;
-        th.style.backgroundColor = '#f0f0f0';
-        tr.appendChild(th);
-        
-        // Data cells
-        for (let col = 1; col <= 28; col++) {
-            const td = document.createElement('td');
-            td.textContent = `R${regionNumber}R${row}C${col}`;
-            td.classList.add(colors[regionNumber]);
-            if (!isViolet) {
-                td.classList.add('hoverable');
-                td.addEventListener('mouseenter', () => showRadar(td, regionNumber, row, col));
-                td.addEventListener('mouseleave', hideRadar);
-            }
-            if (row % 3 === 0) {
-                td.classList.add('highlight');
-            }
-            tr.appendChild(td);
-        }
-        
-        tbody.appendChild(tr);
-    }
+function getRandomColor(excludeViolet = false) {
+    const availableColors = excludeViolet ? colors.slice(0, -2) : colors;
+    return availableColors[Math.floor(Math.random() * availableColors.length)];
 }
 
-function showRadar(element, region, row, col) {
-    const radar = document.createElement('div');
-    radar.classList.add('radar-tooltip');
-    radar.textContent = `Region ${region}, Row ${row}, Col ${col}: ${colors[region].toUpperCase()} Zone`;
-    document.body.appendChild(radar);
-    const rect = element.getBoundingClientRect();
-    radar.style.left = `${rect.left + window.scrollX + rect.width / 2}px`;
-    radar.style.top = `${rect.top + window.scrollY - 40}px`;
+function createMap() {
+    const map = document.getElementById('map');
+    const table = document.createElement('table');
+    const violetCells = new Set();
+
+    // Randomly select 4 violet 10x10 regions
+    while (violetCells.size < 4) {
+        const startRow = Math.floor(Math.random() * (189 - 10));
+        const startCol = Math.floor(Math.random() * (63 - 10));
+        violetCells.add(`${startRow}-${startCol}`);
+    }
+
+    // Create 63x189 grid
+    for (let row = 0; row < 189; row++) {
+        const tr = document.createElement('tr');
+        tr.innerHTML = `<th>${row + 1}</th>`;
+        for (let col = 0; col < 63; col++) {
+            const td = document.createElement('td');
+            let isViolet = false;
+
+            // Check if cell is in a violet region
+            for (let [startRow, startCol] of violetCells) {
+                startRow = parseInt(startRow);
+                startCol = parseInt(startCol);
+                if (row >= startRow && row < startRow + 10 && col >= startCol && col < startCol + 10) {
+                    isViolet = true;
+                    break;
+                }
+            }
+
+            const color = isViolet ? 'violet' : (Math.random() < 0.1 ? 'pink' : getRandomColor(true));
+            td.className = `cell ${color}`;
+            td.dataset.color = color;
+            td.dataset.wordType = wordTypes[Math.floor(Math.random() * wordTypes.length)];
+            td.textContent = `R${row + 1}C${col + 1}`;
+
+            if (!isViolet) {
+                td.classList.add('hoverable');
+                td.addEventListener('mouseenter', showRadar);
+                td.addEventListener('mouseleave', hideRadar);
+            }
+
+            tr.appendChild(td);
+        }
+        table.appendChild(tr);
+    }
+
+    map.appendChild(table);
+}
+
+function showRadar(event) {
+    const cell = event.target;
+    const color = cell.dataset.color;
+    const wordType = cell.dataset.wordType;
+    const cellId = cell.textContent;
+
+    let radarInfo = `${cellId}: ${color.toUpperCase()}<br>Word: ${wordType}`;
+    if (color === 'blue') {
+        radarInfo += '<br>Radar: Full map visibility';
+    } else if (color === 'pink') {
+        radarInfo += '<br>Pink River: Demon activity zone';
+    }
+
+    const radarPopup = document.createElement('div');
+    radarPopup.className = 'radar-popup';
+    radarPopup.innerHTML = radarInfo;
+    document.body.appendChild(radarPopup);
+
+    const rect = cell.getBoundingClientRect();
+    radarPopup.style.left = `${rect.left + window.scrollX + rect.width / 2}px`;
+    radarPopup.style.top = `${rect.top + window.scrollY - 60}px`;
 }
 
 function hideRadar() {
-    const radar = document.querySelector('.radar-tooltip');
-    if (radar) radar.remove();
+    const popup = document.querySelector('.radar-popup');
+    if (popup) popup.remove();
 }
 
-// Initialize 9 regions
-for (let i = 1; i <= 9; i++) {
-    createTable(`table${i}`, i);
-}
+document.addEventListener('DOMContentLoaded', createMap);
