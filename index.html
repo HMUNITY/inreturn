@@ -3,315 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cosmic Self-Alignment Workshop</title>
-    <meta name="description" content="Navigate your consciousness through the multiverse and discover your cosmic signature">
+    <title>Angels & Demons: Strategic Color Evolution</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;500;600;700&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- Cosmic Background Elements -->
-    <div class="cosmic-background">
-        <div class="starfield"></div>
-        <div class="nebula-layer"></div>
-        <div class="quantum-particles"></div>
-    </div>
+    <div class="container">
+        <h1>Angels & Demons: Strategic Color Evolution</h1>
+        
+        <div class="summary">
+            <h2>Game Map Overview</h2>
+            <p><strong>World Size:</strong> 3×3 grid (9 regions, each 28×21 cells)</p>
+            <p><strong>Total Cells:</strong> 5,292 cells (84×63)</p>
+            <p><strong>Highlighting:</strong> Every 3rd row (3, 6, 9, 12, 15, 18, 21)</p>
+            <p><strong>Violet Buildings:</strong> 4 non-hoverable regions</p>
+        </div>
 
-    <!-- Quantum Navigation Array -->
-    <header class="quantum-header">
-        <div class="container">
-            <div class="header-content">
-                <div class="cosmic-logo">
-                    <div class="logo-symbol">⚛</div>
-                    <div class="logo-text">
-                        <h1>Cosmic Self-Alignment Workshop</h1>
-                        <p>Navigate Your Consciousness Through the Multiverse</p>
-                    </div>
-                </div>
-                <nav class="quantum-nav">
-                    <button class="nav-btn active" data-section="home">
-                        <span class="nav-icon">🏠</span>
-                        <span class="nav-text">Home Base</span>
-                    </button>
-                    <button class="nav-btn" data-section="explorer">
-                        <span class="nav-icon">🔬</span>
-                        <span class="nav-text">Quantum Explorer</span>
-                    </button>
-                    <button class="nav-btn" data-section="workshop">
-                        <span class="nav-icon">🧬</span>
-                        <span class="nav-text">Dimensional Scan</span>
-                    </button>
-                    <button class="nav-btn" data-section="results">
-                        <span class="nav-icon">📊</span>
-                        <span class="nav-text">Cosmic Signature</span>
-                    </button>
-                </nav>
+        <div class="map-container">
+            <h2>Game World Map (3×3 Grid)</h2>
+            <div class="map-grid">
+                <div class="region" id="region1"><h3>Region 1</h3><table><thead><tr><th>R\C</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th><th>10</th><th>11</th><th>12</th><th>13</th><th>14</th><th>15</th><th>16</th><th>17</th><th>18</th><th>19</th><th>20</th><th>21</th><th>22</th><th>23</th><th>24</th><th>25</th><th>26</th><th>27</th><th>28</th></tr></thead><tbody id="table1"></tbody></table></div>
+                <div class="region" id="region2"><h3>Region 2</h3><table><thead><tr><th>R\C</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th><th>10</th><th>11</th><th>12</th><th>13</th><th>14</th><th>15</th><th>16</th><th>17</th><th>18</th><th>19</th><th>20</th><th>21</th><th>22</th><th>23</th><th>24</th><th>25</th><th>26</th><th>27</th><th>28</th></tr></thead><tbody id="table2"></tbody></table></div>
+                <div class="region" id="region3"><h3>Region 3</h3><table><thead><tr><th>R\C</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th><th>10</th><th>11</th><th>12</th><th>13</th><th>14</th><th>15</th><th>16</th><th>17</th><th>18</th><th>19</th><th>20</th><th>21</th><th>22</th><th>23</th><th>24</th><th>25</th><th>26</th><th>27</th><th>28</th></tr></thead><tbody id="table3"></tbody></table></div>
+                <div class="region" id="region4"><h3>Region 4</h3><table><thead><tr><th>R\C</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th><th>10</th><th>11</th><th>12</th><th>13</th><th>14</th><th>15</th><th>16</th><th>17</th><th>18</th><th>19</th><th>20</th><th>21</th><th>22</th><th>23</th><th>24</th><th>25</th><th>26</th><th>27</th><th>28</th></tr></thead><tbody id="table4"></tbody></table></div>
+                <div class="region" id="region5"><h3>Region 5</h3><table><thead><tr><th>R\C</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th><th>10</th><th>11</th><th>12</th><th>13</th><th>14</th><th>15</th><th>16</th><th>17</th><th>18</th><th>19</th><th>20</th><th>21</th><th>22</th><th>23</th><th>24</th><th>25</th><th>26</th><th>27</th><th>28</th></tr></thead><tbody id="table5"></tbody></table></div>
+                <div class="region" id="region6"><h3>Region 6</h3><table><thead><tr><th>R\C</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th><th>10</th><th>11</th><th>12</th><th>13</th><th>14</th><th>15</th><th>16</th><th>17</th><th>18</th><th>19</th><th>20</th><th>21</th><th>22</th><th>23</th><th>24</th><th>25</th><th>26</th><th>27</th><th>28</th></tr></thead><tbody id="table6"></tbody></table></div>
+                <div class="region" id="region7"><h3>Region 7</h3><table><thead><tr><th>R\C</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th><th>10</th><th>11</th><th>12</th><th>13</th><th>14</th><th>15</th><th>16</th><th>17</th><th>18</th><th>19</th><th>20</th><th>21</th><th>22</th><th>23</th><th>24</th><th>25</th><th>26</th><th>27</th><th>28</th></tr></thead><tbody id="table7"></tbody></table></div>
+                <div class="region" id="region8"><h3>Region 8</h3><table><thead><tr><th>R\C</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th><th>10</th><th>11</th><th>12</th><th>13</th><th>14</th><th>15</th><th>16</th><th>17</th><th>18</th><th>19</th><th>20</th><th>21</th><th>22</th><th>23</th><th>24</th><th>25</th><th>26</th><th>27</th><th>28</th></tr></thead><tbody id="table8"></tbody></table></div>
+                <div class="region" id="region9"><h3>Region 9</h3><table><thead><tr><th>R\C</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th><th>10</th><th>11</th><th>12</th><th>13</th><th>14</th><th>15</th><th>16</th><th>17</th><th>18</th><th>19</th><th>20</th><th>21</th><th>22</th><th>23</th><th>24</th><th>25</th><th>26</th><th>27</th><th>28</th></tr></thead><tbody id="table9"></tbody></table></div>
             </div>
         </div>
-    </header>
 
-    <!-- Main Quantum Interface -->
-    <main class="quantum-main">
-        <!-- Home Base Section -->
-        <section id="home" class="section active">
-            <div class="container">
-                <!-- Hero Quantum Field -->
-                <div class="hero-field">
-                    <div class="hero-content">
-                        <h2 class="cosmic-title">Welcome to Your Cosmic Journey</h2>
-                        <p class="hero-subtitle">Discover your consciousness signature across infinite dimensional frequencies. Navigate through quantum entanglements and align your cosmic energy with universal harmony.</p>
-                        
-                        <!-- Dimensional Frequency Preview -->
-                        <div class="frequency-preview">
-                            <div class="frequency-item singularity">
-                                <div class="freq-symbol">✨</div>
-                                <span>Singularity of Benevolence</span>
-                            </div>
-                            <div class="frequency-item positive">
-                                <div class="freq-symbol">🌟</div>
-                                <span>Positive Gravitational Pull</span>
-                            </div>
-                            <div class="frequency-item quantum">
-                                <div class="freq-symbol">⚛</div>
-                                <span>Quantum Superposition</span>
-                            </div>
-                            <div class="frequency-item negative">
-                                <div class="freq-symbol">⚡</div>
-                                <span>Negative Energy Perturbation</span>
-                            </div>
-                            <div class="frequency-item void">
-                                <div class="freq-symbol">🌑</div>
-                                <span>Black Hole of Self-Absorption</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Quantum Interface Grid -->
-                <div class="quantum-grid">
-                    <div class="quantum-card">
-                        <div class="card-energy-field">
-                            <div class="energy-icon">🔬</div>
-                        </div>
-                        <h3>Quantum Entanglement Explorer</h3>
-                        <p>Navigate through consciousness fields and discover the dimensional frequencies that define your cosmic essence. Each field represents a fundamental aspect of your multidimensional being.</p>
-                        <button class="quantum-btn primary" onclick="showSection('explorer')">
-                            <span>Begin Exploration</span>
-                            <div class="btn-energy"></div>
-                        </button>
-                    </div>
-
-                    <div class="quantum-card">
-                        <div class="card-energy-field">
-                            <div class="energy-icon">🧬</div>
-                        </div>
-                        <h3>Dimensional Calibration Protocol</h3>
-                        <p>Undergo a personalized consciousness alignment scanning process. Navigate through each quantum field and calibrate your dimensional frequencies for optimal cosmic resonance.</p>
-                        <button class="quantum-btn primary" onclick="showSection('workshop')">
-                            <span>Start Calibration</span>
-                            <div class="btn-energy"></div>
-                        </button>
-                    </div>
-
-                    <div class="quantum-card">
-                        <div class="card-energy-field">
-                            <div class="energy-icon">📊</div>
-                        </div>
-                        <h3>Cosmic Signature Analysis</h3>
-                        <p>View your complete multidimensional consciousness profile. Understand your dominant frequencies, cosmic alignment patterns, and receive guidance for further dimensional evolution.</p>
-                        <button class="quantum-btn secondary" onclick="showSection('results')">
-                            <span>View Signature</span>
-                            <div class="btn-energy"></div>
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Cosmic Framework Explanation -->
-                <div class="cosmic-framework">
-                    <h3>About the Cosmic Self-Alignment Framework</h3>
-                    <p>This quantum consciousness workshop transcends traditional personality assessment by mapping your awareness across multiple dimensional frequencies within the infinite multiverse of consciousness. Each quantum entanglement represents a fundamental force in your cosmic signature, oscillating between states of universal harmony and dimensional chaos.</p>
-                    
-                    <p>Through advanced dimensional calibration protocols, you will navigate the quantum foam of your potential, discovering hidden aspects of your consciousness that exist beyond the observable universe of your current self-awareness. The resulting cosmic signature reveals your unique vibrational pattern and provides alignment protocols for achieving optimal resonance with universal consciousness.</p>
-                </div>
+        <div class="game-info">
+            <h2>Game Mechanics</h2>
+            <div class="faction angels">
+                <h3>👼 Angels (4 Players)</h3>
+                <p><strong>Role:</strong> Build rooms in colored buildings</p>
+                <p><strong>Goal:</strong> Achieve 4 violet buildings</p>
+                <p><strong>Movement:</strong> Travel through pink zones</p>
             </div>
-        </section>
-
-        <!-- Quantum Explorer Section -->
-        <section id="explorer" class="section">
-            <div class="container">
-                <div class="section-header">
-                    <h2>Quantum Entanglement Explorer</h2>
-                    <p>Navigate through consciousness fields and explore their dimensional frequency spectrums</p>
-                </div>
-
-                <!-- Quantum Field Scanner -->
-                <div class="quantum-scanner">
-                    <div class="scanner-interface">
-                        <input type="text" id="field-scanner" class="quantum-input" placeholder="Scan quantum fields...">
-                        <select id="frequency-filter" class="quantum-select">
-                            <option value="all">All Fields</option>
-                            <option value="positive">Positive Resonance</option>
-                            <option value="negative">Negative Perturbation</option>
-                            <option value="balanced">Quantum Superposition</option>
-                        </select>
-                    </div>
-                </div>
-
-                <!-- Consciousness Fields Grid -->
-                <div id="fields-grid" class="fields-grid">
-                    <!-- Quantum field cards will be dynamically generated here -->
-                </div>
-            </div>
-        </section>
-
-        <!-- Dimensional Scan Section -->
-        <section id="workshop" class="section">
-            <div class="container">
-                <div class="calibration-header">
-                    <h2>Dimensional Calibration Protocol</h2>
-                    <div class="energy-alignment-progress">
-                        <div class="progress-container">
-                            <div id="alignment-beam" class="alignment-beam"></div>
-                        </div>
-                        <span id="calibration-status" class="calibration-status">0 / 10</span>
-                    </div>
-                </div>
-
-                <!-- Field Assessment Interface -->
-                <div id="field-assessment" class="field-assessment">
-                    <div class="assessment-matrix">
-                        <h3 id="current-field-name">Initializing Quantum Field...</h3>
-                        <p id="current-field-description">Preparing dimensional calibration protocols...</p>
-
-                        <!-- Frequency Selector -->
-                        <div class="frequency-selector">
-                            <h4>Select Your Dimensional Frequency</h4>
-                            <div id="frequency-options" class="frequency-options">
-                                <!-- Frequency options will be dynamically generated -->
-                            </div>
-                        </div>
-
-                        <!-- Calibration Controls -->
-                        <div class="calibration-controls">
-                            <button id="prev-field" class="quantum-btn secondary" onclick="previousField()">
-                                <span>Previous Field</span>
-                            </button>
-                            <button id="next-field" class="quantum-btn primary" onclick="nextField()" disabled>
-                                <span>Next Field</span>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Calibration Complete Interface -->
-                <div id="calibration-complete" class="calibration-complete" style="display: none;">
-                    <div class="completion-matrix">
-                        <div class="cosmic-achievement">🌌</div>
-                        <h3>Dimensional Calibration Complete</h3>
-                        <p>Your consciousness signature has been successfully mapped across all quantum fields. Navigate to your Cosmic Signature Analysis to explore your multidimensional profile.</p>
-                        <button class="quantum-btn primary" onclick="showSection('results')">
-                            <span>View Cosmic Signature</span>
-                            <div class="btn-energy"></div>
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Cosmic Signature Section -->
-        <section id="results" class="section">
-            <div class="container">
-                <div class="signature-header">
-                    <h2>Your Cosmic Consciousness Signature</h2>
-                    <div class="signature-actions">
-                        <button class="quantum-btn secondary" onclick="resetCalibration()">
-                            <span>Recalibrate Signature</span>
-                        </button>
-                        <button class="quantum-btn primary" onclick="exportCosmicData()">
-                            <span>Export Cosmic Data</span>
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Signature Analysis Grid -->
-                <div class="signature-grid">
-                    <!-- Frequency Distribution -->
-                    <div class="signature-panel">
-                        <h3>Dimensional Frequency Distribution</h3>
-                        <div id="frequency-distribution" class="frequency-distribution">
-                            <!-- Distribution stats will be generated here -->
-                        </div>
-                    </div>
-
-                    <!-- Multidimensional Visualization -->
-                    <div class="signature-panel">
-                        <h3>Multidimensional Resonance Chart</h3>
-                        <div class="chart-container">
-                            <canvas id="resonance-chart" width="400" height="300"></canvas>
-                        </div>
-                    </div>
-
-                    <!-- Cosmic Alignment Analysis -->
-                    <div class="signature-panel full-width">
-                        <h3>Cosmic Alignment Analysis</h3>
-                        <div id="alignment-insights" class="alignment-insights">
-                            <!-- Insights will be generated here -->
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- Holographic Data Projection Modal -->
-    <div id="field-modal" class="holographic-modal">
-        <div class="modal-projection">
-            <div class="projection-header">
-                <h3 id="modal-field-name">Quantum Field Analysis</h3>
-                <button class="close-projection" onclick="closeProjection()">&times;</button>
-            </div>
-            <div class="projection-content">
-                <div id="frequency-spectrum" class="frequency-spectrum">
-                    <!-- Detailed frequency analysis will be displayed here -->
-                </div>
+            <div class="faction demons">
+                <h3>😈 Demons (Pink Zones)</h3>
+                <p><strong>Role:</strong> Guess words to damage buildings</p>
+                <p><strong>Goal:</strong> Prevent angel victory</p>
+                <p><strong>Health:</strong> Collective pink health bar</p>
             </div>
         </div>
     </div>
-
-    <!-- Quantum Footer -->
-    <footer class="quantum-footer">
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-section">
-                    <h4>Cosmic Navigation</h4>
-                    <p>A multidimensional consciousness assessment framework based on quantum entanglement theory and cosmic alignment principles.</p>
-                </div>
-                <div class="footer-section">
-                    <h4>Quantum Features</h4>
-                    <ul>
-                        <li>Interactive Consciousness Field Explorer</li>
-                        <li>Dimensional Calibration Assessment</li>
-                        <li>Multidimensional Resonance Visualization</li>
-                        <li>Cosmic Signature Analysis</li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4>Universal Resources</h4>
-                    <ul>
-                        <li>Quantum Consciousness Theory</li>
-                        <li>Dimensional Frequency Framework</li>
-                        <li>Cosmic Alignment Protocols</li>
-                        <li>Multidimensional Self-Discovery</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2024 Cosmic Self-Alignment Workshop. Navigating consciousness through infinite dimensions.</p>
-            </div>
-        </div>
-    </footer>
-
     <script src="script.js"></script>
 </body>
 </html>
