@@ -3,49 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Angels & Demons: Strategic Color Evolution</title>
+    <title>Angels & Demons: Tree Roots & Pink River</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
-        <h1>Angels & Demons: Strategic Color Evolution</h1>
+        <h1>Angels & Demons: Tree Roots & Pink River</h1>
         
         <div class="summary">
-            <h2>Game Map Overview</h2>
-            <p><strong>World Size:</strong> 3×3 grid (9 regions, each 28×21 cells)</p>
-            <p><strong>Total Cells:</strong> 5,292 cells (84×63)</p>
-            <p><strong>Highlighting:</strong> Every 3rd row (3, 6, 9, 12, 15, 18, 21)</p>
-            <p><strong>Violet Buildings:</strong> 4 non-hoverable regions</p>
+            <h2>Game Overview</h2>
+            <p><strong>Map:</strong> 63×189 grid (11,907 cells, tree roots with pink river)</p>
+            <p><strong>Violet Regions:</strong> 4 non-hoverable 10×10 subgrids</p>
+            <p><strong>Mechanics:</strong> Angels build rooms in root systems, Demons guess words in pink river zones</p>
+            <p><strong>Metaphor:</strong> Tree roots (buildings) grow above a pink river (Demon zones)</p>
         </div>
 
         <div class="map-container">
-            <h2>Game World Map (3×3 Grid)</h2>
-            <div class="map-grid">
-                <div class="region" id="region1"><h3>Region 1</h3><table><thead><tr><th>R\C</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th><th>10</th><th>11</th><th>12</th><th>13</th><th>14</th><th>15</th><th>16</th><th>17</th><th>18</th><th>19</th><th>20</th><th>21</th><th>22</th><th>23</th><th>24</th><th>25</th><th>26</th><th>27</th><th>28</th></tr></thead><tbody id="table1"></tbody></table></div>
-                <div class="region" id="region2"><h3>Region 2</h3><table><thead><tr><th>R\C</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th><th>10</th><th>11</th><th>12</th><th>13</th><th>14</th><th>15</th><th>16</th><th>17</th><th>18</th><th>19</th><th>20</th><th>21</th><th>22</th><th>23</th><th>24</th><th>25</th><th>26</th><th>27</th><th>28</th></tr></thead><tbody id="table2"></tbody></table></div>
-                <div class="region" id="region3"><h3>Region 3</h3><table><thead><tr><th>R\C</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th><th>10</th><th>11</th><th>12</th><th>13</th><th>14</th><th>15</th><th>16</th><th>17</th><th>18</th><th>19</th><th>20</th><th>21</th><th>22</th><th>23</th><th>24</th><th>25</th><th>26</th><th>27</th><th>28</th></tr></thead><tbody id="table3"></tbody></table></div>
-                <div class="region" id="region4"><h3>Region 4</h3><table><thead><tr><th>R\C</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th><th>10</th><th>11</th><th>12</th><th>13</th><th>14</th><th>15</th><th>16</th><th>17</th><th>18</th><th>19</th><th>20</th><th>21</th><th>22</th><th>23</th><th>24</th><th>25</th><th>26</th><th>27</th><th>28</th></tr></thead><tbody id="table4"></tbody></table></div>
-                <div class="region" id="region5"><h3>Region 5</h3><table><thead><tr><th>R\C</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th><th>10</th><th>11</th><th>12</th><th>13</th><th>14</th><th>15</th><th>16</th><th>17</th><th>18</th><th>19</th><th>20</th><th>21</th><th>22</th><th>23</th><th>24</th><th>25</th><th>26</th><th>27</th><th>28</th></tr></thead><tbody id="table5"></tbody></table></div>
-                <div class="region" id="region6"><h3>Region 6</h3><table><thead><tr><th>R\C</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th><th>10</th><th>11</th><th>12</th><th>13</th><th>14</th><th>15</th><th>16</th><th>17</th><th>18</th><th>19</th><th>20</th><th>21</th><th>22</th><th>23</th><th>24</th><th>25</th><th>26</th><th>27</th><th>28</th></tr></thead><tbody id="table6"></tbody></table></div>
-                <div class="region" id="region7"><h3>Region 7</h3><table><thead><tr><th>R\C</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th><th>10</th><th>11</th><th>12</th><th>13</th><th>14</th><th>15</th><th>16</th><th>17</th><th>18</th><th>19</th><th>20</th><th>21</th><th>22</th><th>23</th><th>24</th><th>25</th><th>26</th><th>27</th><th>28</th></tr></thead><tbody id="table7"></tbody></table></div>
-                <div class="region" id="region8"><h3>Region 8</h3><table><thead><tr><th>R\C</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th><th>10</th><th>11</th><th>12</th><th>13</th><th>14</th><th>15</th><th>16</th><th>17</th><th>18</th><th>19</th><th>20</th><th>21</th><th>22</th><th>23</th><th>24</th><th>25</th><th>26</th><th>27</th><th>28</th></tr></thead><tbody id="table8"></tbody></table></div>
-                <div class="region" id="region9"><h3>Region 9</h3><table><thead><tr><th>R\C</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th><th>10</th><th>11</th><th>12</th><th>13</th><th>14</th><th>15</th><th>16</th><th>17</th><th>18</th><th>19</th><th>20</th><th>21</th><th>22</th><th>23</th><th>24</th><th>25</th><th>26</th><th>27</th><th>28</th></tr></thead><tbody id="table9"></tbody></table></div>
-            </div>
+            <h2>Game World Map</h2>
+            <div class="map-grid" id="map"></div>
+        </div>
+
+        <div class="color-spectrum">
+            <div class="color-bar red">RED<br><small>Weak</small></div>
+            <div class="color-bar orange">ORA<br><small>↑</small></div>
+            <div class="color-bar yellow">YEL<br><small>↑</small></div>
+            <div class="color-bar green">GRE<br><small>↑</small></div>
+            <div class="color-bar blue">BLU<br><small>Radar</small></div>
+            <div class="color-bar violet">VIO<br><small>7x Strong</small></div>
+            <div class="color-bar pink">PNK<br><small>Demons</small></div>
         </div>
 
         <div class="game-info">
-            <h2>Game Mechanics</h2>
+            <h2>Mechanics</h2>
             <div class="faction angels">
                 <h3>👼 Angels (4 Players)</h3>
-                <p><strong>Role:</strong> Build rooms in colored buildings</p>
-                <p><strong>Goal:</strong> Achieve 4 violet buildings</p>
-                <p><strong>Movement:</strong> Travel through pink zones</p>
+                <p><strong>Role:</strong> Build rooms in tree root buildings (Adjective, Noun, Verb)</p>
+                <p><strong>Goal:</strong> Achieve 4 violet root systems</p>
+                <p><strong>Actions:</strong> Build, upgrade, defend, move via pink river</p>
             </div>
             <div class="faction demons">
                 <h3>😈 Demons (Pink Zones)</h3>
-                <p><strong>Role:</strong> Guess words to damage buildings</p>
+                <p><strong>Role:</strong> Guess words to damage root systems</p>
                 <p><strong>Goal:</strong> Prevent angel victory</p>
-                <p><strong>Health:</strong> Collective pink health bar</p>
+                <p><strong>Failure:</strong> Sent to uninhabited islands (spectator mode)</p>
             </div>
         </div>
     </div>
