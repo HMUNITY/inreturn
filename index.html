@@ -15,15 +15,20 @@
             <p><strong>Maps:</strong> Two 250x5 grids (Left: Johari, Right: Nohari)</p>
             <p><strong>Pacmans:</strong> 246 pink (Demon zones)</p>
             <p><strong>Snakes:</strong> 4 (switching cells)</p>
-            <p><strong>Start:</strong> Bottom, adjective choice</p>
+            <p><strong>Controls:</strong> a (left), w (up), d (right)</p>
+        </div>
+
+        <div class="control-buttons">
+            <button id="enlarge-btn">Enlarge</button>
+            <button id="minimize-btn">Minimize</button>
         </div>
 
         <div class="game-maps">
-            <div class="map-container left-map">
+            <div class="map-container left-map" id="left-map-container">
                 <h2>Johari Map</h2>
                 <div class="map-grid" id="left-map"></div>
             </div>
-            <div class="map-container right-map">
+            <div class="map-container right-map" id="right-map-container">
                 <h2>Nohari Map</h2>
                 <div class="map-grid" id="right-map"></div>
             </div>
