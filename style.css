@@ -30,8 +30,15 @@ h1, h2, h3 {
     color: #ccc;
 }
 
+.game-maps {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
 .map-container {
-    max-height: 500px;
+    flex: 1;
+    max-height: 600px;
     overflow: auto;
     background: #111;
 }
@@ -58,21 +65,26 @@ th {
     display: none;
 }
 
-.cell.red { background-color: #ff4444; }
-.cell.yellow { background-color: #ffdd44; }
-.cell.blue { background-color: #4444ff; }
-.cell.orange { background-color: #ff8844; }
-.cell.green { background-color: #44ff44; }
+.cell.red { background-color: #ff4444; animation: snakeRetract 2s infinite; }
+.cell.yellow { background-color: #ffdd44; animation: snakeRetract 2s infinite; }
+.cell.blue { background-color: #4444ff; animation: snakeRetract 2s infinite; }
 .cell.violet { background-color: #8844ff; }
 .cell.pink { 
     background-color: #ff44aa; 
     background-image: linear-gradient(45deg, rgba(255,255,255,0.2) 25%, transparent 25%, transparent 50%, rgba(255,255,255,0.2) 50%, rgba(255,255,255,0.2) 75%, transparent 75%, transparent);
-    animation: flow 2s linear infinite;
+    animation: pacmanBlink 1s infinite;
 }
 
-@keyframes flow {
-    0% { background-position: 0 0; }
-    100% { background-position: 10px 10px; }
+@keyframes pacmanBlink {
+    0% { background-color: #ff44aa; }
+    50% { background-color: #ff77cc; }
+    100% { background-color: #ff44aa; }
+}
+
+@keyframes snakeRetract {
+    0% { transform: scale(1); }
+    50% { transform: scale(0.8); }
+    100% { transform: scale(1); }
 }
 
 .color-bar {
@@ -103,8 +115,6 @@ th {
 .red { background: #ff4444; }
 .yellow { background: #ffdd44; }
 .blue { background: #4444ff; }
-.orange { background: #ff8844; }
-.green { background: #44ff44; }
 .violet { background: #8844ff; }
 .pink { background: #ff44aa; }
 
@@ -173,4 +183,5 @@ th {
     th, td { width: 6px; height: 6px; }
     .container { padding: 10px; }
     .color-bar { width: 30px; height: 30px; font-size: 8px; }
+    .game-maps { flex-direction: column; }
 }
