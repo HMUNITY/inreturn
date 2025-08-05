@@ -91,4 +91,118 @@ th {
 .cell.violet { background-color: #8844ff; }
 .cell.pink { 
     background-color: #ff44aa; 
-    background-image: linear-gradient(45deg, rgba(255,255,255,0.2) 25%, transparent 25%, transparent 50%, rgba(255,255,255,0.2) 50%, rgba
+    background-image: linear-gradient(45deg, rgba(255,255,255,0.2) 25%, transparent 25%, transparent 50%, rgba(255,255,255,0.2) 50%, rgba(255,255,255,0.2) 75%, transparent 75%, transparent);
+    animation: pacmanBlink 1s infinite;
+}
+
+@keyframes pacmanBlink {
+    0% { background-color: #ff44aa; }
+    50% { background-color: #ff77cc; }
+    100% { background-color: #ff44aa; }
+}
+
+@keyframes snakeRetract {
+    0% { transform: scale(1); }
+    50% { transform: scale(0.8); }
+    100% { transform: scale(1); }
+}
+
+.color-bar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+    font-size: 10px;
+    text-shadow: 1px 1px 1px rgba(0,0,0,0.7);
+    transition: transform 0.2s ease;
+}
+
+.color-bar:hover {
+    transform: scale(1.1);
+}
+
+.color-spectrum {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+    gap: 5px;
+}
+
+.red { background: #ff4444; }
+.yellow { background: #ffdd44; }
+.blue { background: #4444ff; }
+.violet { background: #8844ff; }
+.pink { background: #ff44aa; }
+
+.cell.hoverable:hover {
+    transform: scale(1.5);
+}
+
+.radar-popup {
+    position: absolute;
+    background: rgba(0,0,0,0.9);
+    color: #fff;
+    padding: 5px;
+    border-radius: 3px;
+    font-size: 10px;
+    transform: translateX(-50%);
+    z-index: 1000;
+}
+
+.faction {
+    padding: 10px;
+    border-radius: 5px;
+    margin: 10px 0;
+    background: #444;
+    color: #ccc;
+}
+
+.angels {
+    border: 2px solid #6666ff;
+}
+
+.demons {
+    border: 2px solid #ff6666;
+}
+
+.healthbar {
+    width: 200px;
+    height: 20px;
+    background: #555;
+    border: 2px solid #888;
+    border-radius: 5px;
+    margin: 10px auto;
+    overflow: hidden;
+}
+
+.healthbar-fill {
+    height: 100%;
+    background: #44ff44;
+    transition: width 0.5s;
+}
+
+.mindmap-toggle {
+    display: none;
+    background: #444;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 5px;
+    color: #ccc;
+}
+
+.mindmap-toggle.active {
+    display: block;
+}
+
+@media (max-width: 768px) {
+    table { font-size: 5px; }
+    th, td { width: 6px; height: 6px; }
+    .container { padding: 10px; }
+    .color-bar { width: 30px; height: 30px; font-size: 8px; }
+    .game-maps { flex-direction: column; }
+    .map-container { max-height: 50px; } /* Adjusted for mobile */
+}
