@@ -9,10 +9,13 @@ let angelHealth = { left: 100, right: 100 };
 let moveCount = { left: 0, right: 0 };
 let currentStage = "morning";
 const movements = { morning: 250, day: 200, evening: 150 };
+let isGameStarted = false;
 
 function createMap(side) {
   const mapId = side === "left" ? "left-map" : "right-map";
+  const mapContainerId = side === "left" ? "left-map-container" : "right-map-container";
   const map = document.getElementById(mapId);
+  const mapContainer = document.getElementById(mapContainerId);
   const table = document.createElement('table');
   let pinkCount = 0;
   const pinkTarget = 246;
@@ -55,44 +58,46 @@ function createMap(side) {
   }
 
   map.appendChild(table);
+  mapContainer.style.maxHeight = isGameStarted ? '600px' : '100px';
 }
 
 function startGame() {
-  let adjectiveChoice = prompt("Angels to Demons: Select Johari or Nohari adjectives?");
-  console.log(`Adjective pool: ${adjectiveChoice}`);
-  createMap("left");
-  createMap("right");
-  document.addEventListener('keydown', moveAngel);
+  if (!isGameStarted) {
+    createMap("left");
+    createMap("right");
+    isGameStarted = true;
+  }
 }
 
 function moveAngel(event) {
-  ['left', 'right'].forEach(side => {
-    if (!moveCount[side] || moveCount[side] < movements[currentStage]) {
-      const { row, col } = angelPositions[side];
-      let newRow = row;
-      let newCol = col;
+  if (isGameStarted) {
+    ['left', 'right'].forEach(side => {
+      if (moveCount[side] < movements[currentStage]) {
+        const { row, col } = angelPositions[side];
+        let newRow = row;
+        let newCol = col;
 
-      switch (event.key) {
-        case 'ArrowUp': newRow = Math.max(0, row - 1); break;
-        case 'ArrowDown': newRow = Math.min(249, row + 1); break;
-        case 'ArrowLeft': newCol = Math.max(0, col - 1); break;
-        case 'ArrowRight': newCol = Math.min(4, col + 1); break;
-      }
+        switch (event.key) {
+          case 'a': newCol = Math.max(0, col - 1); break; // Left
+          case 'w': newRow = Math.max(0, row - 1); break; // Up (front)
+          case 'd': newCol = Math.min(4, col + 1); break; // Right
+        }
 
-      const newCell = document.getElementById(`${side}-${newRow}-${newCol}`);
-      if (newCell) {
-        const currentCell = document.getElementById(`${side}-${row}-${col}`);
-        currentCell.textContent = currentCell.dataset.color === 'pink' ? '😈' : '';
-        angelPositions[side] = { row: newRow, col: newCol };
-        newCell.textContent = '👼';
-        moveCount[side] = (moveCount[side] || 0) + 1;
+        const newCell = document.getElementById(`${side}-${newRow}-${newCol}`);
+        if (newCell) {
+          const currentCell = document.getElementById(`${side}-${row}-${col}`);
+          currentCell.textContent = currentCell.dataset.color === 'pink' ? '😈' : '';
+          angelPositions[side] = { row: newRow, col: newCol };
+          newCell.textContent = '👼';
+          moveCount[side] = (moveCount[side] || 0) + 1;
 
-        if (moveCount[side] === movements[currentStage]) {
-          nextStage(side);
+          if (moveCount[side] === movements[currentStage]) {
+            nextStage(side);
+          }
         }
       }
-    }
-  });
+    });
+  }
 }
 
 function nextStage(side) {
@@ -104,4 +109,24 @@ function nextStage(side) {
   console.log(`New stage: ${currentStage}, Health: ${angelHealth[side]}%`);
 }
 
-document.addEventListener('DOMContentLoaded', startGame);
+document.getElementById('enlarge-btn').addEventListener('click', () => {
+  isGameStarted = true;
+  document.getElementById('left-map-container').style.maxHeight = '600px';
+  document.getElementById('right-map-container').style.maxHeight = '600px';
+  startGame();
+});
+
+document.getElementById('minimize-btn').addEventListener('click', () => {
+  isGameStarted = false;
+  document.getElementById('left-map-container').style.maxHeight = '100px';
+  document.getElementById('right-map-container').style.maxHeight = '100px';
+  angelPositions = { left: { row: 0, col: 2 }, right: { row: 0, col: 2 } };
+  moveCount = { left: 0, right: 0 };
+  currentStage = "morning";
+  angelHealth = { left: 100, right: 100 };
+  // Reset maps (simplified for demo)
+  document.getElementById('left-map').innerHTML = '';
+  document.getElementById('right-map').innerHTML = '';
+});
+
+document.addEventListener('keydown', moveAngel);
